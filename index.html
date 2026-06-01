@@ -24,38 +24,10 @@ body{
     color:white;
 }
 
-.nav{
-    position:absolute;
-    top:30px;
-    left:60px;
-    right:60px;
-    z-index:10;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    font-weight:800;
-    letter-spacing:2px;
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-}
-
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-size:.9rem;
-    opacity:.8;
-}
-
 .hero{
     min-height:100vh;
     background:
-        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.60)),
+        linear-gradient(rgba(0,0,0,.50), rgba(0,0,0,.65)),
         url("hero.jpg");
     background-size:cover;
     background-position:center center;
@@ -69,24 +41,27 @@ body{
 }
 
 .tag{
-    color:#2d8cff;
+    color:#55aaff;
     font-size:.9rem;
     letter-spacing:5px;
-    font-weight:700;
+    font-weight:800;
     margin-bottom:20px;
+    text-shadow:0 2px 12px rgba(0,0,0,.9);
 }
 
 h1{
     font-size:clamp(4rem,10vw,7rem);
     line-height:.9;
     margin-bottom:30px;
+    text-shadow:0 4px 25px rgba(0,0,0,.5);
 }
 
 .subtitle{
     font-size:1.3rem;
     line-height:1.8;
-    color:#e8e8e8;
+    color:#f0f0f0;
     margin-bottom:40px;
+    text-shadow:0 3px 15px rgba(0,0,0,.8);
 }
 
 .buttons{
@@ -103,6 +78,7 @@ h1{
     border-radius:12px;
     font-weight:700;
     transition:.2s;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 .btn:hover{
@@ -125,9 +101,9 @@ h1{
 }
 
 .section-tag{
-    color:#2d8cff;
+    color:#55aaff;
     letter-spacing:4px;
-    font-weight:700;
+    font-weight:800;
     margin-bottom:15px;
 }
 
@@ -171,39 +147,44 @@ h2{
 
 @media(max-width:800px){
 
-    .nav{
-        top:22px;
-        left:30px;
-        right:30px;
-    }
-
-    .nav-links{
-        display:none;
-    }
-
     .hero{
         align-items:center;
     }
 
     .content{
-        padding:30px;
-        margin-top:-220px;
+        padding:28px;
+        margin-top:-180px;
+    }
+
+    .tag{
+        font-size:.78rem;
+        letter-spacing:4px;
+        margin-bottom:18px;
     }
 
     h1{
-        font-size:4rem;
+        font-size:3.8rem;
+        margin-bottom:28px;
     }
 
     .subtitle{
-        font-size:1.1rem;
+        font-size:1.15rem;
+        line-height:1.7;
+        margin-bottom:34px;
     }
 
     .buttons{
-        flex-direction:column;
+        display:grid;
+        grid-template-columns:repeat(3, 1fr);
+        gap:10px;
     }
 
     .btn{
+        padding:13px 8px;
+        font-size:.9rem;
         text-align:center;
+        border-radius:10px;
+        white-space:nowrap;
     }
 
     h2{
@@ -216,19 +197,17 @@ h2{
     }
 }
 
+@media(max-width:380px){
+    .btn{
+        font-size:.8rem;
+        padding:12px 6px;
+    }
+}
+
 </style>
 </head>
 
 <body>
-
-<nav class="nav">
-    <div class="logo">TILLY FPV</div>
-
-    <div class="nav-links">
-        <a href="#latest">Latest Video</a>
-        <a href="#about">About</a>
-    </div>
-</nav>
 
 <section class="hero">
 
