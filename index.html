@@ -15,8 +15,8 @@
 }
 
 :root{
-    --bg:#0B0F17;
-    --blue:#2D8CFF;
+    --bg:#0b0f17;
+    --blue:#2d8cff;
     --text:#ffffff;
     --text-secondary:#d8d8d8;
 }
@@ -32,40 +32,42 @@ body{
 
     background:
     linear-gradient(
-        rgba(0,0,0,.40),
-        rgba(0,0,0,.40)
+        rgba(0,0,0,.30),
+        rgba(0,0,0,.45)
     ),
-    url('hero.jpg');
+    url("hero.jpg");
 
     background-size:cover;
-    background-position:50% 15%;
+    background-position:center top;
+
     display:flex;
     align-items:center;
 }
 
 .content{
-    max-width:1200px;
-    padding:60px;
+    width:100%;
+    max-width:700px;
+    padding-left:80px;
 }
 
 .tag{
     color:var(--blue);
-    letter-spacing:4px;
     font-size:.9rem;
-    font-weight:600;
+    letter-spacing:4px;
+    font-weight:700;
     margin-bottom:20px;
 }
 
 h1{
-    font-size:clamp(4rem,8vw,7rem);
-    line-height:0.95;
-    margin-bottom:24px;
+    font-size:clamp(5rem,9vw,8rem);
+    line-height:.9;
+    margin-bottom:30px;
 }
 
 .subtitle{
-    font-size:1.25rem;
+    font-size:1.35rem;
+    line-height:1.9;
     color:var(--text-secondary);
-    line-height:1.8;
     margin-bottom:40px;
 }
 
@@ -79,30 +81,27 @@ h1{
     text-decoration:none;
     color:white;
     background:var(--blue);
-    padding:15px 30px;
-    border-radius:10px;
+    padding:16px 30px;
+    border-radius:12px;
     font-weight:700;
-    transition:0.2s;
+    transition:.2s;
 }
 
 .btn:hover{
-    transform:translateY(-2px);
+    transform:translateY(-3px);
 }
 
 .scroll{
     position:absolute;
     bottom:30px;
-    left:60px;
-    color:white;
+    left:80px;
     opacity:.6;
-    font-size:.9rem;
 }
 
-@media(max-width:768px){
+@media(max-width:900px){
 
     .hero{
         align-items:flex-end;
-        background-position:center top;
     }
 
     .content{
@@ -111,11 +110,11 @@ h1{
     }
 
     h1{
-        font-size:3.5rem;
+        font-size:4rem;
     }
 
     .subtitle{
-        font-size:1rem;
+        font-size:1.1rem;
     }
 
     .scroll{
@@ -130,49 +129,49 @@ h1{
 
 <section class="hero">
 
-    <div class="content">
+<div class="content">
 
-        <div class="tag">
-            FPV PILOT • CONTENT CREATOR
-        </div>
+<div class="tag">
+FPV PILOT • CONTENT CREATOR
+</div>
 
-        <h1>
-            TILLY FPV
-        </h1>
+<h1>
+TILLY FPV
+</h1>
 
-        <div class="subtitle">
-            Freestyle FPV Pilot<br>
-            Videographer<br>
-            Content Creator
-        </div>
+<div class="subtitle">
+Freestyle FPV Pilot<br>
+Videographer<br>
+Content Creator
+</div>
 
-        <div class="buttons">
+<div class="buttons">
 
-            <a class="btn"
-               href="https://youtube.com/@tilly_fpv"
-               target="_blank">
-               ▶ YouTube
-            </a>
+<a class="btn"
+href="https://www.youtube.com/@tilly_fpv"
+target="_blank">
+▶ YouTube
+</a>
 
-            <a class="btn"
-               href="https://www.instagram.com/tilly_fpv"
-               target="_blank">
-               ◎ Instagram
-            </a>
+<a class="btn"
+href="https://www.instagram.com/tilly_fpv/"
+target="_blank">
+◎ Instagram
+</a>
 
-            <a class="btn"
-               href="https://www.tiktok.com/@tilly79_mw"
-               target="_blank">
-               ♪ TikTok
-            </a>
+<a class="btn"
+href="https://www.tiktok.com/@tilly79_mw"
+target="_blank">
+♪ TikTok
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
-    <div class="scroll">
-        ↓ Scroll for more
-    </div>
+<div class="scroll">
+↓ Scroll for more
+</div>
 
 </section>
 
