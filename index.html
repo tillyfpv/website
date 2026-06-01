@@ -27,10 +27,11 @@ body{
 
 .hero{
     min-height:100vh;
+    position:relative;
     background:
         linear-gradient(
-            rgba(0,0,0,.65),
-            rgba(0,0,0,.75)
+            rgba(0,0,0,.55),
+            rgba(0,0,0,.72)
         ),
         url("asset/hero1.jpg");
     background-size:cover;
@@ -45,21 +46,21 @@ body{
 }
 
 .tag{
-    color:#3d8dff;
-    letter-spacing:8px;
+    color:#66aaff;
+    letter-spacing:7px;
     font-size:14px;
-    font-weight:700;
-    margin-bottom:25px;
+    font-weight:800;
+    margin-bottom:22px;
     text-transform:uppercase;
-    text-shadow:0 2px 14px rgba(0,0,0,.9);
+    text-shadow:0 2px 14px rgba(0,0,0,.95);
 }
 
 h1{
     font-size:110px;
     font-weight:900;
     line-height:0.9;
-    margin-bottom:40px;
-    text-shadow:0 4px 25px rgba(0,0,0,.65);
+    margin-bottom:42px;
+    text-shadow:0 4px 25px rgba(0,0,0,.7);
 }
 
 .subtitle{
@@ -67,7 +68,7 @@ h1{
     line-height:1.8;
     color:#f0f0f0;
     margin-bottom:70px;
-    text-shadow:0 3px 15px rgba(0,0,0,.8);
+    text-shadow:0 3px 15px rgba(0,0,0,.9);
 }
 
 .buttons{
@@ -86,7 +87,7 @@ h1{
     font-size:20px;
     font-weight:700;
     transition:.25s;
-    box-shadow:0 10px 35px rgba(0,0,0,.35);
+    box-shadow:0 10px 35px rgba(0,0,0,.4);
 }
 
 .btn:hover{
@@ -97,7 +98,7 @@ h1{
 /* VIDEO SECTION */
 
 .video-section{
-    padding:100px 30px;
+    padding:80px 30px 100px;
     background:#071224;
 }
 
@@ -107,10 +108,10 @@ h1{
 }
 
 .video-tag{
-    color:#3d8dff;
+    color:#66aaff;
     letter-spacing:8px;
     font-size:14px;
-    font-weight:700;
+    font-weight:800;
     text-transform:uppercase;
     margin-bottom:20px;
 }
@@ -144,31 +145,35 @@ h1{
 @media(max-width:800px){
 
     .hero{
-        min-height:78vh;
-        background-position:center 20%;
-        align-items:flex-start;
+        min-height:82vh;
+        background-position:center center;
+        display:block;
     }
 
     .content{
-        padding:50px;
-        margin-top:-260px;
+        position:absolute;
+        top:105px;
+        left:0;
+        right:0;
+        padding:0 28px;
+        max-width:none;
     }
 
     .tag{
         font-size:12px;
-        letter-spacing:5px;
+        letter-spacing:4px;
         margin-bottom:18px;
     }
 
     h1{
-        font-size:84px;
-        margin-bottom:55px;
+        font-size:64px;
+        margin-bottom:42px;
     }
 
     .subtitle{
         font-size:18px;
         line-height:1.7;
-        margin-bottom:80px;
+        margin-bottom:105px;
     }
 
     .buttons{
@@ -179,14 +184,19 @@ h1{
 
     .btn{
         text-align:center;
-        font-size:16px;
-        padding:18px 10px;
+        font-size:15px;
+        padding:16px 6px;
         border-radius:12px;
         white-space:nowrap;
     }
 
     .video-section{
-        padding:55px 22px 80px;
+        padding:35px 22px 80px;
+    }
+
+    .video-tag{
+        font-size:13px;
+        letter-spacing:7px;
     }
 
     .video-title{
@@ -197,17 +207,22 @@ h1{
 @media(max-width:380px){
 
     .content{
-        padding:42px;
-        margin-top:-245px;
+        top:95px;
+        padding:0 24px;
     }
 
     h1{
-        font-size:74px;
+        font-size:56px;
+    }
+
+    .subtitle{
+        font-size:17px;
+        margin-bottom:90px;
     }
 
     .btn{
-        font-size:14px;
-        padding:15px 6px;
+        font-size:13px;
+        padding:14px 5px;
     }
 }
 
