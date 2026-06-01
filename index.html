@@ -7,7 +7,6 @@
 <title>Tilly FPV</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -60,7 +59,7 @@ h1{
     font-size:1.3rem;
     line-height:1.8;
     color:#f0f0f0;
-    margin-bottom:40px;
+    margin-bottom:32px;
     text-shadow:0 3px 15px rgba(0,0,0,.8);
 }
 
@@ -86,13 +85,13 @@ h1{
     background:#1878e8;
 }
 
-.latest-video,
-.about{
-    padding:100px 25px;
+.latest-video{
+    padding:50px 25px 90px;
+    background:#080c13;
 }
 
-.latest-video{
-    background:#080c13;
+.about{
+    padding:90px 25px;
 }
 
 .container{
@@ -145,62 +144,74 @@ h2{
     font-size:.9rem;
 }
 
+/* MOBILE */
+
 @media(max-width:800px){
 
     .hero{
+        min-height:78vh;
         align-items:center;
+        background-size:cover;
+        background-position:center 35%;
     }
 
     .content{
-        padding:28px;
-        margin-top:-180px;
+        padding:26px;
+        margin-top:-190px;
     }
 
     .tag{
-        font-size:.78rem;
-        letter-spacing:4px;
-        margin-bottom:18px;
+        font-size:.72rem;
+        letter-spacing:3.5px;
+        margin-bottom:16px;
     }
 
     h1{
-        font-size:3.8rem;
-        margin-bottom:28px;
+        font-size:3.55rem;
+        margin-bottom:22px;
     }
 
     .subtitle{
-        font-size:1.15rem;
-        line-height:1.7;
-        margin-bottom:34px;
+        font-size:1.05rem;
+        line-height:1.65;
+        margin-bottom:24px;
     }
 
     .buttons{
         display:grid;
         grid-template-columns:repeat(3, 1fr);
-        gap:10px;
+        gap:9px;
     }
 
     .btn{
-        padding:13px 8px;
-        font-size:.9rem;
+        padding:12px 6px;
+        font-size:.82rem;
         text-align:center;
         border-radius:10px;
         white-space:nowrap;
     }
 
-    h2{
-        font-size:2rem;
+    .latest-video{
+        padding:34px 20px 65px;
     }
 
-    .latest-video,
     .about{
         padding:70px 25px;
+    }
+
+    h2{
+        font-size:2rem;
     }
 }
 
 @media(max-width:380px){
     .btn{
-        font-size:.8rem;
-        padding:12px 6px;
+        font-size:.76rem;
+        padding:11px 5px;
+    }
+
+    h1{
+        font-size:3.25rem;
     }
 }
 
