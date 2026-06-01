@@ -1,94 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tilly FPV</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<title>Tilly FPV</title>
 
-        body{
-            font-family:Arial, Helvetica, sans-serif;
-            background:#0B0F17;
-            color:white;
-        }
+<style>
 
-        .hero{
-            min-height:100vh;
-            background:
-            linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-            url('hero.jpg');
-            background-size:cover;
-            background-position:center;
-            display:flex;
-            align-items:center;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .content{
-            max-width:1200px;
-            padding:40px;
-        }
+:root{
+    --bg:#0B0F17;
+    --blue:#2D8CFF;
+    --text:#ffffff;
+    --text-secondary:#d8d8d8;
+}
 
-        .tag{
-            color:#2D8CFF;
-            letter-spacing:3px;
-            font-size:.9rem;
-            margin-bottom:20px;
-        }
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
 
-        h1{
-            font-size:clamp(3rem,8vw,6rem);
-            margin-bottom:20px;
-        }
+.hero{
+    min-height:100vh;
 
-        .subtitle{
-            font-size:1.2rem;
-            color:#d0d0d0;
-            max-width:600px;
-            line-height:1.6;
-            margin-bottom:30px;
-        }
+    background:
+    linear-gradient(
+        rgba(0,0,0,.40),
+        rgba(0,0,0,.40)
+    ),
+    url('hero.jpg');
 
-        .buttons{
-            display:flex;
-            gap:15px;
-            flex-wrap:wrap;
-        }
+    background-size:cover;
+    background-position:50% 15%;
+    display:flex;
+    align-items:center;
+}
 
-        .btn{
-            background:#2D8CFF;
-            color:white;
-            text-decoration:none;
-            padding:14px 28px;
-            border-radius:8px;
-            font-weight:bold;
-        }
+.content{
+    max-width:1200px;
+    padding:60px;
+}
 
-        .btn:hover{
-            opacity:.9;
-        }
+.tag{
+    color:var(--blue);
+    letter-spacing:4px;
+    font-size:.9rem;
+    font-weight:600;
+    margin-bottom:20px;
+}
 
-        @media(max-width:768px){
+h1{
+    font-size:clamp(4rem,8vw,7rem);
+    line-height:0.95;
+    margin-bottom:24px;
+}
 
-            .hero{
-                align-items:flex-end;
-            }
+.subtitle{
+    font-size:1.25rem;
+    color:var(--text-secondary);
+    line-height:1.8;
+    margin-bottom:40px;
+}
 
-            .content{
-                padding:30px;
-                padding-bottom:80px;
-            }
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
 
-            h1{
-                font-size:3rem;
-            }
-        }
-    </style>
+.btn{
+    text-decoration:none;
+    color:white;
+    background:var(--blue);
+    padding:15px 30px;
+    border-radius:10px;
+    font-weight:700;
+    transition:0.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.scroll{
+    position:absolute;
+    bottom:30px;
+    left:60px;
+    color:white;
+    opacity:.6;
+    font-size:.9rem;
+}
+
+@media(max-width:768px){
+
+    .hero{
+        align-items:flex-end;
+        background-position:center top;
+    }
+
+    .content{
+        padding:30px;
+        padding-bottom:90px;
+    }
+
+    h1{
+        font-size:3.5rem;
+    }
+
+    .subtitle{
+        font-size:1rem;
+    }
+
+    .scroll{
+        left:30px;
+    }
+}
+
+</style>
 </head>
 
 <body>
@@ -101,10 +136,14 @@
             FPV PILOT • CONTENT CREATOR
         </div>
 
-        <h1>TILLY FPV</h1>
+        <h1>
+            TILLY FPV
+        </h1>
 
         <div class="subtitle">
-            Freestyle FPV pilot, videographer and content creator exploring unique places from a different perspective.
+            Freestyle FPV Pilot<br>
+            Videographer<br>
+            Content Creator
         </div>
 
         <div class="buttons">
@@ -112,23 +151,27 @@
             <a class="btn"
                href="https://youtube.com/@tilly_fpv"
                target="_blank">
-               YouTube
+               ▶ YouTube
             </a>
 
             <a class="btn"
                href="https://www.instagram.com/tilly_fpv"
                target="_blank">
-               Instagram
+               ◎ Instagram
             </a>
 
             <a class="btn"
                href="https://www.tiktok.com/@tilly79_mw"
                target="_blank">
-               TikTok
+               ♪ TikTok
             </a>
 
         </div>
 
+    </div>
+
+    <div class="scroll">
+        ↓ Scroll for more
     </div>
 
 </section>
