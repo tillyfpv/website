@@ -1,131 +1,274 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Tilly FPV</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
+    font-family:Arial, Helvetica, sans-serif;
     background:#0b0f17;
     color:white;
-    font-family:Arial, Helvetica, sans-serif;
 }
+
+/* HERO */
 
 .hero{
     min-height:100vh;
-    position:relative;
+
     background:
-        linear-gradient(rgba(0,0,0,.42), rgba(0,0,0,.55)),
-        url("hero.jpg");
+    linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.60)
+    ),
+    url("hero.jpg");
+
     background-size:cover;
-    background-position:58% 42%;
+    background-position:center center;
+
     display:flex;
     align-items:center;
 }
 
 .content{
-    padding-left:70px;
-    max-width:620px;
-    position:relative;
-    z-index:2;
+    max-width:700px;
+    padding:60px;
 }
 
 .tag{
     color:#2d8cff;
-    font-size:.85rem;
-    letter-spacing:4px;
+    font-size:.9rem;
+    letter-spacing:5px;
     font-weight:700;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 h1{
-    font-size:clamp(4rem,7vw,7rem);
+    font-size:clamp(4rem,10vw,7rem);
     line-height:.9;
-    margin-bottom:28px;
+    margin-bottom:30px;
 }
 
 .subtitle{
-    font-size:1.25rem;
+    font-size:1.3rem;
     line-height:1.8;
-    color:#e6e6e6;
-    margin-bottom:34px;
+    color:#e8e8e8;
+    margin-bottom:40px;
 }
 
 .buttons{
     display:flex;
-    gap:14px;
     flex-wrap:wrap;
+    gap:15px;
 }
 
 .btn{
-    color:white;
     background:#2d8cff;
+    color:white;
     text-decoration:none;
-    padding:15px 28px;
-    border-radius:10px;
+    padding:16px 30px;
+    border-radius:12px;
     font-weight:700;
+    transition:.2s;
 }
 
-.scroll{
-    position:absolute;
-    left:70px;
-    bottom:35px;
-    opacity:.65;
-    font-size:.95rem;
+.btn:hover{
+    transform:translateY(-3px);
 }
+
+/* VIDEO SECTION */
+
+.latest-video{
+    padding:100px 25px;
+    background:#0b0f17;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.section-tag{
+    color:#2d8cff;
+    letter-spacing:4px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.latest-video h2{
+    font-size:2.8rem;
+    margin-bottom:30px;
+}
+
+.video-wrapper{
+    position:relative;
+    width:100%;
+    padding-bottom:56.25%;
+    overflow:hidden;
+    border-radius:18px;
+}
+
+.video-wrapper iframe{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+/* ABOUT */
+
+.about{
+    padding:100px 25px;
+}
+
+.about p{
+    max-width:800px;
+    line-height:1.8;
+    color:#d8d8d8;
+    font-size:1.1rem;
+}
+
+/* MOBILE */
 
 @media(max-width:800px){
+
     .hero{
-        background-position:55% center;
         align-items:flex-end;
     }
 
     .content{
         padding:30px;
-        padding-bottom:100px;
+        padding-bottom:80px;
     }
 
     h1{
-        font-size:3.6rem;
+        font-size:4rem;
     }
 
     .subtitle{
-        font-size:1.05rem;
+        font-size:1.1rem;
     }
 
-    .scroll{
-        left:30px;
-        bottom:30px;
+    .buttons{
+        flex-direction:column;
     }
+
+    .btn{
+        text-align:center;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
+
 <section class="hero">
-    <div class="content">
-        <div class="tag">FPV PILOT • CONTENT CREATOR</div>
 
-        <h1>TILLY FPV</h1>
+<div class="content">
 
-        <div class="subtitle">
-            Freestyle FPV Pilot<br>
-            Videographer<br>
-            Content Creator
-        </div>
+<div class="tag">
+FPV PILOT • CONTENT CREATOR
+</div>
 
-        <div class="buttons">
-            <a class="btn" href="https://www.youtube.com/@tilly_fpv" target="_blank">▶ YouTube</a>
-            <a class="btn" href="https://www.instagram.com/tilly_fpv/" target="_blank">◎ Instagram</a>
-            <a class="btn" href="https://www.tiktok.com/@tilly79_mw" target="_blank">♪ TikTok</a>
-        </div>
-    </div>
+<h1>
+TILLY FPV
+</h1>
 
-    <div class="scroll">↓ Scroll for more</div>
+<div class="subtitle">
+Freestyle FPV Pilot<br>
+FPV Filmmaker<br>
+Content Creator
+</div>
+
+<div class="buttons">
+
+<a class="btn"
+href="https://www.youtube.com/@tilly_fpv"
+target="_blank">
+▶ YouTube
+</a>
+
+<a class="btn"
+href="https://www.instagram.com/tilly_fpv/"
+target="_blank">
+◎ Instagram
+</a>
+
+<a class="btn"
+href="https://www.tiktok.com/@tilly79_mw"
+target="_blank">
+♪ TikTok
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- LATEST VIDEO -->
+
+<section class="latest-video">
+
+<div class="container">
+
+<div class="section-tag">
+LATEST VIDEO
+</div>
+
+<h2>Pure Emotion</h2>
+
+<div class="video-wrapper">
+
+<iframe
+src="https://www.youtube.com/embed/myYRoYWM76E"
+title="Tilly FPV"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about">
+
+<div class="container">
+
+<div class="section-tag">
+ABOUT
+</div>
+
+<h2 style="margin-bottom:30px;">
+Hi, I'm Marcus.
+</h2>
+
+<p>
+I'm a German FPV pilot focused on freestyle flying, abandoned places,
+industrial locations and unique perspectives.
+My goal is simple: create shots that make people feel like they're flying
+right beside me.
+</p>
+
+</div>
+
 </section>
 
 </body>
