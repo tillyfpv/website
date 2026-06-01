@@ -3,176 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Tilly FPV</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-    --bg:#0b0f17;
-    --blue:#2d8cff;
-    --text:#ffffff;
-    --text-secondary:#d8d8d8;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
+    background:#0b0f17;
+    color:white;
     font-family:Arial, Helvetica, sans-serif;
-    background:var(--bg);
-    color:var(--text);
 }
 
 .hero{
     min-height:100vh;
-
+    position:relative;
     background:
-    linear-gradient(
-        rgba(0,0,0,.30),
-        rgba(0,0,0,.45)
-    ),
-    url("hero.jpg");
-
+        linear-gradient(rgba(0,0,0,.42), rgba(0,0,0,.55)),
+        url("hero.jpg");
     background-size:cover;
-    background-position:center top;
-
+    background-position:58% 42%;
     display:flex;
     align-items:center;
 }
 
 .content{
-    width:100%;
-    max-width:700px;
-    padding-left:80px;
+    padding-left:70px;
+    max-width:620px;
+    position:relative;
+    z-index:2;
 }
 
 .tag{
-    color:var(--blue);
-    font-size:.9rem;
+    color:#2d8cff;
+    font-size:.85rem;
     letter-spacing:4px;
     font-weight:700;
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
 
 h1{
-    font-size:clamp(5rem,9vw,8rem);
+    font-size:clamp(4rem,7vw,7rem);
     line-height:.9;
-    margin-bottom:30px;
+    margin-bottom:28px;
 }
 
 .subtitle{
-    font-size:1.35rem;
-    line-height:1.9;
-    color:var(--text-secondary);
-    margin-bottom:40px;
+    font-size:1.25rem;
+    line-height:1.8;
+    color:#e6e6e6;
+    margin-bottom:34px;
 }
 
 .buttons{
     display:flex;
-    gap:15px;
+    gap:14px;
     flex-wrap:wrap;
 }
 
 .btn{
-    text-decoration:none;
     color:white;
-    background:var(--blue);
-    padding:16px 30px;
-    border-radius:12px;
+    background:#2d8cff;
+    text-decoration:none;
+    padding:15px 28px;
+    border-radius:10px;
     font-weight:700;
-    transition:.2s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
 }
 
 .scroll{
     position:absolute;
-    bottom:30px;
-    left:80px;
-    opacity:.6;
+    left:70px;
+    bottom:35px;
+    opacity:.65;
+    font-size:.95rem;
 }
 
-@media(max-width:900px){
-
+@media(max-width:800px){
     .hero{
+        background-position:55% center;
         align-items:flex-end;
     }
 
     .content{
         padding:30px;
-        padding-bottom:90px;
+        padding-bottom:100px;
     }
 
     h1{
-        font-size:4rem;
+        font-size:3.6rem;
     }
 
     .subtitle{
-        font-size:1.1rem;
+        font-size:1.05rem;
     }
 
     .scroll{
         left:30px;
+        bottom:30px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
 <section class="hero">
+    <div class="content">
+        <div class="tag">FPV PILOT • CONTENT CREATOR</div>
 
-<div class="content">
+        <h1>TILLY FPV</h1>
 
-<div class="tag">
-FPV PILOT • CONTENT CREATOR
-</div>
+        <div class="subtitle">
+            Freestyle FPV Pilot<br>
+            Videographer<br>
+            Content Creator
+        </div>
 
-<h1>
-TILLY FPV
-</h1>
+        <div class="buttons">
+            <a class="btn" href="https://www.youtube.com/@tilly_fpv" target="_blank">▶ YouTube</a>
+            <a class="btn" href="https://www.instagram.com/tilly_fpv/" target="_blank">◎ Instagram</a>
+            <a class="btn" href="https://www.tiktok.com/@tilly79_mw" target="_blank">♪ TikTok</a>
+        </div>
+    </div>
 
-<div class="subtitle">
-Freestyle FPV Pilot<br>
-Videographer<br>
-Content Creator
-</div>
-
-<div class="buttons">
-
-<a class="btn"
-href="https://www.youtube.com/@tilly_fpv"
-target="_blank">
-▶ YouTube
-</a>
-
-<a class="btn"
-href="https://www.instagram.com/tilly_fpv/"
-target="_blank">
-◎ Instagram
-</a>
-
-<a class="btn"
-href="https://www.tiktok.com/@tilly79_mw"
-target="_blank">
-♪ TikTok
-</a>
-
-</div>
-
-</div>
-
-<div class="scroll">
-↓ Scroll for more
-</div>
-
+    <div class="scroll">↓ Scroll for more</div>
 </section>
 
 </body>
