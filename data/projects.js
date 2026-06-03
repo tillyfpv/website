@@ -1,1 +1,30 @@
-
+const projectsData = [
+    {
+        title: "Stockcar Racing",
+        category: "Motorsport",
+        image: "asset/hero1.jpg",
+        description: "FPV mitten im Renngeschehen. Dreck, Speed, Action und direkte Nähe zu den Fahrzeugen.",
+        link: "https://youtube.com/@tilly_fpv"
+    },
+    {
+        title: "Drift Events",
+        category: "Motorsport",
+        image: "asset/hero1.jpg",
+        description: "High-speed FPV Tracking Shots, Follow-Cam und dynamische Perspektiven für Automotive-Events.",
+        link: "https://youtube.com/@tilly_fpv"
+    },
+    {
+        title: "Industrial & Lost Places",
+        category: "Freestyle FPV",
+        image: "asset/hero1.jpg",
+        description: "Freestyle Lines durch verlassene Industrieanlagen, Hallen, Silos und besondere Locations.",
+        link: "https://youtube.com/@tilly_fpv"
+    },
+    {
+        title: "Real Estate & Locations",
+        category: "Commercial",
+        image: "asset/hero1.jpg",
+        description: "FPV Fly-throughs für Immobilien, Gewerbeobjekte, Locations und kreative Präsentationen.",
+        link: "https://youtube.com/@tilly_fpv"
+    }
+];
