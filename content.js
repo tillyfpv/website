@@ -45,10 +45,10 @@ const siteContent = {
 
         events: [
             {
-                date: "TBA",
-                title: "Next FPV Session",
-                location: "Germany",
-                status: "Planned"
+                date: "20.06.26",
+                title: "Oldtimer Treffen",
+                location: "Unter den Linden, 39307 Jerichow",
+                status: "Fix"
             }
         ],
 
@@ -109,10 +109,10 @@ const siteContent = {
 
         events: [
             {
-                date: "TBA",
-                title: "Nächste FPV Session",
-                location: "Deutschland",
-                status: "Geplant"
+                date: "20.06.26",
+                title: "Oldtimer Treffen",
+                location: "Unter den Linden, 39307 Jerichow",
+                status: "Fix"
             }
         ],
 
