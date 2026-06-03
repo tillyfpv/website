@@ -11,4 +11,23 @@ const galleryData = [
         title: "Sunset Flight",
         image: "asset/hero1.jpg"
     }
+        {
+        title: "Sunset Flight",
+        image: "asset/hero1.jpg"
+    }    {
+        title: "Sunset Flight",
+        image: "asset/hero1.jpg"
+    }    {
+        title: "Sunset Flight",
+        image: "asset/hero1.jpg"
+    }    {
+        title: "Sunset Flight",
+        image: "asset/hero1.jpg"
+    }    {
+        title: "Sunset Flight",
+        image: "asset/hero1.jpg"
+    }    {
+        title: "Sunset Flight7",
+        image: "asset/hero1.jpg"
+    }
 ];
