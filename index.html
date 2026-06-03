@@ -1,1 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Tilly FPV | FPV Pilot & Content Creator</title>
+
+<meta name="description" content="Tilly FPV – Freestyle FPV Pilot, FPV Filmmaker and Content Creator. Lost places, freestyle lines, events and unique perspectives.">
+
+<meta property="og:title" content="Tilly FPV | FPV Pilot & Content Creator">
+<meta property="og:description" content="Freestyle FPV Pilot • FPV Filmmaker • Content Creator">
+<meta property="og:image" content="https://tillyfpv.de/asset/og-image.jpg">
+<meta property="og:url" content="https://tillyfpv.de">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tilly FPV">
+<meta name="twitter:description" content="Freestyle FPV Pilot • FPV Filmmaker • Content Creator">
+<meta name="twitter:image" content="https://tillyfpv.de/asset/og-image.jpg">
+
+<link rel="icon" type="image/png" href="asset/favicon.png">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#05080d;
+    color:white;
+}
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    background:
+        linear-gradient(
+            rgba(0,0,0,.55),
+            rgba(0,0,0,.78)
+        ),
+        url("asset/hero1.jpg");
+    background-size:cover;
+    background-position:center center;
+    display:flex;
+    align-items:center;
+}
+
+.content{
+    max-width:720px;
+    padding:80px;
+}
+
+.tag,
+.section-tag{
+    color:#66aaff;
+    letter-spacing:6px;
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:20px;
+    text-shadow:0 2px 14px rgba(0,0,0,.9);
+}
+
+h1{
+    font-size:110px;
+    font-weight:900;
+    line-height:.9;
+    margin-bottom:42px;
+    text-shadow:0 4px 25px rgba(0,0,0,.7);
+}
+
+.subtitle{
+    font-size:24px;
+    line-height:1.8;
+    color:#f0f0f0;
+    margin-bottom:70px;
+    text-shadow:0 3px 15px rgba(0,0,0,.9);
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    background:#3d8dff;
+    color:white;
+    text-decoration:none;
+    padding:18px 28px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:800;
+    box-shadow:0 10px 35px rgba(0,0,0,.45);
+    transition:.25s;
+    border:none;
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    background:#5aa0ff;
+}
+
+.btn.secondary{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.25);
+}
+
+section{
+    padding:95px 30px;
+}
+
+.dark{
+    background:#071224;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+}
+
+h2{
+    font-size:52px;
+    margin-bottom:45px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.card{
+    background:linear-gradient(180deg,#101827,#080c13);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+.card-content{
+    padding:24px;
+}
+
+.card small{
+    color:#66aaff;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-weight:800;
+}
+
+.card h3{
+    font-size:26px;
+    margin:12px 0 20px;
+}
+
+.card p{
+    color:#cfd6e3;
+    line-height:1.6;
+}
+
+.card a{
+    color:white;
+    text-decoration:none;
+    font-weight:800;
+}
+
+.event-card{
+    padding:28px;
+}
+
+.event-date{
+    font-size:34px;
+    font-weight:900;
+    color:white;
+    margin-bottom:18px;
+}
+
+.status{
+    display:inline-block;
+    margin-top:18px;
+    padding:8px 12px;
+    border-radius:999px;
+    background:rgba(102,170,255,.15);
+    color:#66aaff;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.booking-box{
+    background:
+        linear-gradient(135deg,rgba(61,141,255,.18),rgba(255,255,255,.04));
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:28px;
+    padding:40px;
+    box-shadow:0 30px 90px rgba(0,0,0,.35);
+}
+
+.booking-box p,
+.about p{
+    max-width:850px;
+    color:#d8d8d8;
+    line-height:1.8;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.booking-form{
+    margin-top:35px;
+    display:grid;
+    gap:18px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    background:#080c13;
+    color:white;
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:14px;
+    padding:16px;
+    font-size:16px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+.legal-note{
+    color:#9da8b8;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.footer{
+    padding:45px 25px;
+    background:#05080d;
+    text-align:center;
+    color:#8f98a8;
+    font-size:14px;
+}
+
+.footer-links{
+    margin-top:18px;
+}
+
+.footer a{
+    color:#8f98a8;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+.footer a:hover{
+    color:white;
+}
+
+@media(max-width:850px){
+
+    .hero{
+        min-height:82vh;
+        display:block;
+        background-position:center center;
+    }
+
+    .content{
+        position:absolute;
+        top:75px;
+        left:0;
+        right:0;
+        padding:0 28px;
+        max-width:none;
+    }
+
+    .tag{
+        font-size:12px;
+        letter-spacing:4px;
+        margin-bottom:18px;
+    }
+
+    h1{
+        font-size:64px;
+        margin-bottom:42px;
+    }
+
+    .subtitle{
+        font-size:18px;
+        line-height:1.7;
+        margin-bottom:115px;
+    }
+
+    .buttons{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:10px;
+    }
+
+    .btn{
+        text-align:center;
+        font-size:14px;
+        padding:15px 5px;
+        border-radius:12px;
+        white-space:nowrap;
+    }
+
+    section{
+        padding:60px 22px;
+    }
+
+    h2{
+        font-size:36px;
+        margin-bottom:30px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .card img{
+        height:210px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .booking-box{
+        padding:28px;
+    }
+}
+
+@media(max-width:380px){
+
+    .content{
+        top:68px;
+        padding:0 24px;
+    }
+
+    h1{
+        font-size:56px;
+    }
+
+    .subtitle{
+        font-size:17px;
+        margin-bottom:95px;
+    }
+
+    .btn{
+        font-size:13px;
+        padding:14px 4px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="content">
+        <div class="tag">FPV PILOT • CONTENT CREATOR</div>
+
+        <h1>TILLY FPV</h1>
+
+        <div class="subtitle">
+            Freestyle FPV Pilot<br>
+            FPV Filmmaker<br>
+            Content Creator
+        </div>
+
+        <div class="buttons">
+            <a class="btn" id="youtubeLink" href="#" target="_blank">▶ YouTube</a>
+            <a class="btn" id="instagramLink" href="#" target="_blank">◎ Instagram</a>
+            <a class="btn" id="tiktokLink" href="#" target="_blank">♪ TikTok</a>
+        </div>
+    </div>
+</section>
+
+<section class="dark">
+    <div class="container">
+        <div class="section-tag">Upcoming Events</div>
+        <h2>Where I'm Flying Next</h2>
+        <div class="grid" id="events"></div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-tag">Featured Flights</div>
+        <h2>Latest Action</h2>
+        <div class="grid" id="videos"></div>
+    </div>
+</section>
+
+<section class="dark">
+    <div class="container">
+        <div class="section-tag">Gallery</div>
+        <h2>Moments & Places</h2>
+        <div class="grid" id="gallery"></div>
+    </div>
+</section>
+
+<section class="booking">
+    <div class="container">
+        <div class="section-tag">Booking</div>
+        <h2 id="bookingHeadline">FPV for Events & Projects</h2>
+
+        <div class="booking-box">
+            <p id="bookingText"></p>
+
+            <a class="btn" id="bookingButton" href="#" target="_blank">
+                Send Booking Request
+            </a>
+
+            <form class="booking-form" id="bookingForm" style="display:none;">
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="E-Mail" required>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" name="event" placeholder="Event / Project">
+                    <input type="text" name="date" placeholder="Date / Timeframe">
+                </div>
+
+                <select name="type">
+                    <option value="">Type of request</option>
+                    <option value="event">Event Coverage</option>
+                    <option value="fpv-shoot">FPV Shoot</option>
+                    <option value="collab">Collaboration</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <textarea name="message" placeholder="Tell me about your project"></textarea>
+
+                <p class="legal-note">
+                    By sending this request, you agree that your information will be used to process your booking request.
+                    Details will be available in the privacy policy.
+                </p>
+
+                <button class="btn" type="submit">
+                    Send Request
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="about dark">
+    <div class="container">
+        <div class="section-tag">About</div>
+        <h2>Hi, I'm Tilly.</h2>
+        <p>
+            German FPV pilot focused on freestyle flying, abandoned places,
+            industrial locations and unique perspectives. Tilly FPV is about speed,
+            emotion and flying lines that put viewers right inside the action.
+        </p>
+    </div>
+</section>
+
+<footer class="footer">
+    © Tilly FPV
+
+    <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a id="footerInstagram" href="#" target="_blank">Instagram</a>
+        <a id="footerYoutube" href="#" target="_blank">YouTube</a>
+    </div>
+</footer>
+
+<script src="content.js"></script>
+
+<script>
+document.getElementById("youtubeLink").href = siteContent.social.youtube;
+document.getElementById("instagramLink").href = siteContent.social.instagram;
+document.getElementById("tiktokLink").href = siteContent.social.tiktok;
+document.getElementById("footerInstagram").href = siteContent.social.instagram;
+document.getElementById("footerYoutube").href = siteContent.social.youtube;
+
+function renderEvents(){
+    const container = document.getElementById("events");
+
+    siteContent.events.forEach(event => {
+        container.innerHTML += `
+            <div class="card event-card">
+                <div class="event-date">${event.date}</div>
+                <h3>${event.title}</h3>
+                <p>${event.location}</p>
+                <span class="status">${event.status}</span>
+            </div>
+        `;
+    });
+}
+
+function renderVideos(){
+    const container = document.getElementById("videos");
+
+    siteContent.videos.forEach(video => {
+        container.innerHTML += `
+            <div class="card">
+                <img src="${video.thumbnail}" alt="${video.title}">
+                <div class="card-content">
+                    <small>${video.category}</small>
+                    <h3>${video.title}</h3>
+                    <a href="${video.link}" target="_blank">Watch →</a>
+                </div>
+            </div>
+        `;
+    });
+}
+
+function renderGallery(){
+    const container = document.getElementById("gallery");
+
+    siteContent.gallery.forEach(item => {
+        container.innerHTML += `
+            <div class="card">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="card-content">
+                    <h3>${item.title}</h3>
+                </div>
+            </div>
+        `;
+    });
+}
+
+function renderBooking(){
+    document.getElementById("bookingHeadline").textContent = siteContent.booking.headline;
+    document.getElementById("bookingText").textContent = siteContent.booking.text;
+    document.getElementById("bookingButton").textContent = siteContent.booking.buttonText;
+    document.getElementById("bookingButton").href = siteContent.booking.buttonLink;
+
+    if(siteContent.booking.enabled === true){
+        document.getElementById("bookingButton").style.display = "none";
+        document.getElementById("bookingForm").style.display = "grid";
+    }
+}
+
+renderEvents();
+renderVideos();
+renderGallery();
+renderBooking();
+</script>
+
+</body>
+</html>
