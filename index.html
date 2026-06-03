@@ -189,6 +189,19 @@ h1{
     background:#5aa0ff;
 }
 
+.btn-small{
+    display:inline-block;
+    margin-top:18px;
+    color:white;
+    background:rgba(102,170,255,.16);
+    border:1px solid rgba(102,170,255,.35);
+    text-decoration:none;
+    padding:11px 14px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:900;
+}
+
 section{
     padding:95px 30px;
     scroll-margin-top:90px;
@@ -278,6 +291,61 @@ h2{
     font-weight:900;
     letter-spacing:2px;
     text-transform:uppercase;
+}
+
+.carousel{
+    position:relative;
+    overflow:hidden;
+}
+
+.carousel-track{
+    display:flex;
+    gap:24px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    padding-bottom:18px;
+}
+
+.carousel-track::-webkit-scrollbar{
+    height:8px;
+}
+
+.carousel-track::-webkit-scrollbar-track{
+    background:#080c13;
+    border-radius:999px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb{
+    background:#3d8dff;
+    border-radius:999px;
+}
+
+.carousel-card{
+    min-width:360px;
+    max-width:360px;
+    scroll-snap-align:start;
+}
+
+.carousel-card img{
+    height:260px;
+}
+
+.carousel-controls{
+    display:flex;
+    gap:12px;
+    margin-top:22px;
+}
+
+.carousel-btn{
+    background:#3d8dff;
+    color:white;
+    border:none;
+    border-radius:12px;
+    padding:12px 18px;
+    font-size:18px;
+    font-weight:900;
+    cursor:pointer;
 }
 
 .booking-box{
@@ -437,6 +505,15 @@ textarea{
         height:210px;
     }
 
+    .carousel-card{
+        min-width:82vw;
+        max-width:82vw;
+    }
+
+    .carousel-card img{
+        height:230px;
+    }
+
     .form-row{
         grid-template-columns:1fr;
     }
@@ -534,7 +611,15 @@ textarea{
     <div class="container">
         <div class="section-tag" id="galleryTag"></div>
         <h2 id="galleryTitle"></h2>
-        <div class="grid" id="galleryGrid"></div>
+
+        <div class="carousel">
+            <div class="carousel-track" id="galleryTrack"></div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="galleryPrev">←</button>
+                <button class="carousel-btn" id="galleryNext">→</button>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -601,6 +686,9 @@ textarea{
 </footer>
 
 <script src="content.js"></script>
+<script src="data/events.js"></script>
+<script src="data/videos.js"></script>
+<script src="data/gallery.js"></script>
 
 <script>
 function getLanguage(){
@@ -656,13 +744,15 @@ function renderEvents(){
     const container = document.getElementById("eventsGrid");
     container.innerHTML = "";
 
-    content.events.forEach(event => {
+    eventsData[currentLanguage].forEach(event => {
         container.innerHTML += `
             <div class="card event-card">
                 <div class="event-date">${event.date}</div>
                 <h3>${event.title}</h3>
                 <p>${event.location}</p>
                 <span class="status">${event.status}</span>
+                <br>
+                <a class="btn-small" href="${event.mapsLink}" target="_blank">${content.mapsButton}</a>
             </div>
         `;
     });
@@ -672,7 +762,7 @@ function renderVideos(){
     const container = document.getElementById("videosGrid");
     container.innerHTML = "";
 
-    content.videos.forEach(video => {
+    videosData[currentLanguage].forEach(video => {
         container.innerHTML += `
             <div class="card">
                 <img src="${video.thumbnail}" alt="${video.title}">
@@ -687,18 +777,38 @@ function renderVideos(){
 }
 
 function renderGallery(){
-    const container = document.getElementById("galleryGrid");
+    const container = document.getElementById("galleryTrack");
     container.innerHTML = "";
 
-    content.gallery.forEach(item => {
+    galleryData.forEach(item => {
         container.innerHTML += `
-            <div class="card">
+            <div class="card carousel-card">
                 <img src="${item.image}" alt="${item.title}">
                 <div class="card-content">
                     <h3>${item.title}</h3>
                 </div>
             </div>
         `;
+    });
+}
+
+function setupGalleryCarousel(){
+    const track = document.getElementById("galleryTrack");
+    const prev = document.getElementById("galleryPrev");
+    const next = document.getElementById("galleryNext");
+
+    prev.addEventListener("click", () => {
+        track.scrollBy({
+            left: -380,
+            behavior: "smooth"
+        });
+    });
+
+    next.addEventListener("click", () => {
+        track.scrollBy({
+            left: 380,
+            behavior: "smooth"
+        });
     });
 }
 
@@ -735,6 +845,7 @@ renderStaticSections();
 renderEvents();
 renderVideos();
 renderGallery();
+setupGalleryCarousel();
 renderBooking();
 </script>
 
