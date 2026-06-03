@@ -553,10 +553,11 @@ textarea{
     <a class="logo" href="#top">TILLY FPV</a>
 
     <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#booking" data-i18n="nav.booking">Booking</a>
         <a href="#events" data-i18n="nav.events">Events</a>
         <a href="#videos" data-i18n="nav.videos">Videos</a>
         <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
-        <a href="#booking" data-i18n="nav.booking">Booking</a>
         <a href="#about" data-i18n="nav.about">About</a>
     </div>
 
@@ -566,10 +567,11 @@ textarea{
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+    <a href="#projects">Projects</a>
+    <a href="#booking" data-i18n="nav.booking">Booking</a>
     <a href="#events" data-i18n="nav.events">Events</a>
     <a href="#videos" data-i18n="nav.videos">Videos</a>
     <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
-    <a href="#booking" data-i18n="nav.booking">Booking</a>
     <a href="#about" data-i18n="nav.about">About</a>
     <a href="impressum.html" data-i18n="footerImprint">Impressum</a>
     <a href="datenschutz.html" data-i18n="footerPrivacy">Datenschutz</a>
@@ -591,35 +593,11 @@ textarea{
     </div>
 </section>
 
-<section class="dark" id="events">
+<section class="dark" id="projects">
     <div class="container">
-        <div class="section-tag" id="eventsTag"></div>
-        <h2 id="eventsTitle"></h2>
-        <div class="grid" id="eventsGrid"></div>
-    </div>
-</section>
-
-<section id="videos">
-    <div class="container">
-        <div class="section-tag" id="videosTag"></div>
-        <h2 id="videosTitle"></h2>
-        <div class="grid" id="videosGrid"></div>
-    </div>
-</section>
-
-<section class="dark" id="gallery">
-    <div class="container">
-        <div class="section-tag" id="galleryTag"></div>
-        <h2 id="galleryTitle"></h2>
-
-        <div class="carousel">
-            <div class="carousel-track" id="galleryTrack"></div>
-
-            <div class="carousel-controls">
-                <button class="carousel-btn" id="galleryPrev">←</button>
-                <button class="carousel-btn" id="galleryNext">→</button>
-            </div>
-        </div>
+        <div class="section-tag">Projects</div>
+        <h2>Selected FPV Work</h2>
+        <div class="grid" id="projectsGrid"></div>
     </div>
 </section>
 
@@ -666,6 +644,38 @@ textarea{
     </div>
 </section>
 
+<section class="dark" id="events">
+    <div class="container">
+        <div class="section-tag" id="eventsTag"></div>
+        <h2 id="eventsTitle"></h2>
+        <div class="grid" id="eventsGrid"></div>
+    </div>
+</section>
+
+<section id="videos">
+    <div class="container">
+        <div class="section-tag" id="videosTag"></div>
+        <h2 id="videosTitle"></h2>
+        <div class="grid" id="videosGrid"></div>
+    </div>
+</section>
+
+<section class="dark" id="gallery">
+    <div class="container">
+        <div class="section-tag" id="galleryTag"></div>
+        <h2 id="galleryTitle"></h2>
+
+        <div class="carousel">
+            <div class="carousel-track" id="galleryTrack"></div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="galleryPrev">←</button>
+                <button class="carousel-btn" id="galleryNext">→</button>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="about dark" id="about">
     <div class="container">
         <div class="section-tag" id="aboutTag"></div>
@@ -686,6 +696,7 @@ textarea{
 </footer>
 
 <script src="content.js"></script>
+<script src="data/projects.js"></script>
 <script src="data/events.js"></script>
 <script src="data/videos.js"></script>
 <script src="data/gallery.js"></script>
@@ -738,6 +749,25 @@ function renderHero(){
     document.getElementById("heroTag").textContent = content.heroTag;
     document.getElementById("heroTitle").textContent = content.heroTitle;
     document.getElementById("heroSubtitle").innerHTML = content.heroSubtitle.join("<br>");
+}
+
+function renderProjects(){
+    const container = document.getElementById("projectsGrid");
+    container.innerHTML = "";
+
+    projectsData.forEach(project => {
+        container.innerHTML += `
+            <div class="card">
+                <img src="${project.image}" alt="${project.title}">
+                <div class="card-content">
+                    <small>${project.category}</small>
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <a href="${project.link}" target="_blank">Watch Project →</a>
+                </div>
+            </div>
+        `;
+    });
 }
 
 function renderEvents(){
@@ -842,11 +872,12 @@ function renderStaticSections(){
 translateNavigation();
 renderHero();
 renderStaticSections();
+renderProjects();
+renderBooking();
 renderEvents();
 renderVideos();
 renderGallery();
 setupGalleryCarousel();
-renderBooking();
 </script>
 
 </body>
