@@ -38,6 +38,84 @@ body{
     color:white;
 }
 
+.nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 34px;
+    background:linear-gradient(rgba(5,8,13,.92), rgba(5,8,13,.35), transparent);
+}
+
+.logo{
+    font-weight:900;
+    letter-spacing:2px;
+    text-decoration:none;
+    color:white;
+}
+
+.nav-links{
+    display:flex;
+    gap:24px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:800;
+    opacity:.82;
+}
+
+.nav-links a:hover{
+    opacity:1;
+    color:#66aaff;
+}
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    color:white;
+    font-size:32px;
+    cursor:pointer;
+}
+
+.mobile-menu{
+    display:none;
+    position:fixed;
+    top:72px;
+    left:18px;
+    right:18px;
+    z-index:99;
+    background:rgba(7,18,36,.96);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 25px 80px rgba(0,0,0,.5);
+}
+
+.mobile-menu a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:18px 22px;
+    font-weight:800;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.mobile-menu a:last-child{
+    border-bottom:none;
+}
+
+.mobile-menu.open{
+    display:block;
+}
+
 .hero{
     min-height:100vh;
     position:relative;
@@ -111,13 +189,9 @@ h1{
     background:#5aa0ff;
 }
 
-.btn.secondary{
-    background:transparent;
-    border:1px solid rgba(255,255,255,.25);
-}
-
 section{
     padding:95px 30px;
+    scroll-margin-top:90px;
 }
 
 .dark{
@@ -284,6 +358,20 @@ textarea{
 
 @media(max-width:850px){
 
+    .nav{
+        padding:18px 22px;
+        background:rgba(5,8,13,.82);
+        backdrop-filter:blur(10px);
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
     .hero{
         min-height:82vh;
         display:block;
@@ -332,6 +420,7 @@ textarea{
 
     section{
         padding:60px 22px;
+        scroll-margin-top:80px;
     }
 
     h2{
@@ -383,7 +472,33 @@ textarea{
 
 <body>
 
-<section class="hero">
+<nav class="nav">
+    <a class="logo" href="#top">TILLY FPV</a>
+
+    <div class="nav-links">
+        <a href="#events">Events</a>
+        <a href="#videos">Videos</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#booking">Booking</a>
+        <a href="#about">About</a>
+    </div>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        ☰
+    </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#events">Upcoming Events</a>
+    <a href="#videos">Featured Flights</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#booking">Booking</a>
+    <a href="#about">About</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+</div>
+
+<section class="hero" id="top">
     <div class="content">
         <div class="tag">FPV PILOT • CONTENT CREATOR</div>
 
@@ -403,31 +518,31 @@ textarea{
     </div>
 </section>
 
-<section class="dark">
+<section class="dark" id="events">
     <div class="container">
         <div class="section-tag">Upcoming Events</div>
         <h2>Where I'm Flying Next</h2>
-        <div class="grid" id="events"></div>
+        <div class="grid" id="eventsGrid"></div>
     </div>
 </section>
 
-<section>
+<section id="videos">
     <div class="container">
         <div class="section-tag">Featured Flights</div>
         <h2>Latest Action</h2>
-        <div class="grid" id="videos"></div>
+        <div class="grid" id="videosGrid"></div>
     </div>
 </section>
 
-<section class="dark">
+<section class="dark" id="gallery">
     <div class="container">
         <div class="section-tag">Gallery</div>
         <h2>Moments & Places</h2>
-        <div class="grid" id="gallery"></div>
+        <div class="grid" id="galleryGrid"></div>
     </div>
 </section>
 
-<section class="booking">
+<section class="booking" id="booking">
     <div class="container">
         <div class="section-tag">Booking</div>
         <h2 id="bookingHeadline">FPV for Events & Projects</h2>
@@ -473,7 +588,7 @@ textarea{
     </div>
 </section>
 
-<section class="about dark">
+<section class="about dark" id="about">
     <div class="container">
         <div class="section-tag">About</div>
         <h2>Hi, I'm Tilly.</h2>
@@ -499,6 +614,19 @@ textarea{
 <script src="content.js"></script>
 
 <script>
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("open");
+});
+
+mobileMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+    });
+});
+
 document.getElementById("youtubeLink").href = siteContent.social.youtube;
 document.getElementById("instagramLink").href = siteContent.social.instagram;
 document.getElementById("tiktokLink").href = siteContent.social.tiktok;
@@ -506,7 +634,7 @@ document.getElementById("footerInstagram").href = siteContent.social.instagram;
 document.getElementById("footerYoutube").href = siteContent.social.youtube;
 
 function renderEvents(){
-    const container = document.getElementById("events");
+    const container = document.getElementById("eventsGrid");
 
     siteContent.events.forEach(event => {
         container.innerHTML += `
@@ -521,7 +649,7 @@ function renderEvents(){
 }
 
 function renderVideos(){
-    const container = document.getElementById("videos");
+    const container = document.getElementById("videosGrid");
 
     siteContent.videos.forEach(video => {
         container.innerHTML += `
@@ -538,7 +666,7 @@ function renderVideos(){
 }
 
 function renderGallery(){
-    const container = document.getElementById("gallery");
+    const container = document.getElementById("galleryGrid");
 
     siteContent.gallery.forEach(item => {
         container.innerHTML += `
