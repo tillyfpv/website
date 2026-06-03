@@ -476,11 +476,11 @@ textarea{
     <a class="logo" href="#top">TILLY FPV</a>
 
     <div class="nav-links">
-        <a href="#events">Events</a>
-        <a href="#videos">Videos</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#booking">Booking</a>
-        <a href="#about">About</a>
+        <a href="#events" data-i18n="nav.events">Events</a>
+        <a href="#videos" data-i18n="nav.videos">Videos</a>
+        <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+        <a href="#booking" data-i18n="nav.booking">Booking</a>
+        <a href="#about" data-i18n="nav.about">About</a>
     </div>
 
     <button class="menu-btn" id="menuBtn" aria-label="Open menu">
@@ -489,26 +489,22 @@ textarea{
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-    <a href="#events">Upcoming Events</a>
-    <a href="#videos">Featured Flights</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#booking">Booking</a>
-    <a href="#about">About</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
+    <a href="#events" data-i18n="nav.events">Events</a>
+    <a href="#videos" data-i18n="nav.videos">Videos</a>
+    <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+    <a href="#booking" data-i18n="nav.booking">Booking</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="impressum.html" data-i18n="footerImprint">Impressum</a>
+    <a href="datenschutz.html" data-i18n="footerPrivacy">Datenschutz</a>
 </div>
 
 <section class="hero" id="top">
     <div class="content">
-        <div class="tag">FPV PILOT • CONTENT CREATOR</div>
+        <div class="tag" id="heroTag"></div>
 
-        <h1>TILLY FPV</h1>
+        <h1 id="heroTitle"></h1>
 
-        <div class="subtitle">
-            Freestyle FPV Pilot<br>
-            FPV Filmmaker<br>
-            Content Creator
-        </div>
+        <div class="subtitle" id="heroSubtitle"></div>
 
         <div class="buttons">
             <a class="btn" id="youtubeLink" href="#" target="_blank">▶ YouTube</a>
@@ -520,39 +516,37 @@ textarea{
 
 <section class="dark" id="events">
     <div class="container">
-        <div class="section-tag">Upcoming Events</div>
-        <h2>Where I'm Flying Next</h2>
+        <div class="section-tag" id="eventsTag"></div>
+        <h2 id="eventsTitle"></h2>
         <div class="grid" id="eventsGrid"></div>
     </div>
 </section>
 
 <section id="videos">
     <div class="container">
-        <div class="section-tag">Featured Flights</div>
-        <h2>Latest Action</h2>
+        <div class="section-tag" id="videosTag"></div>
+        <h2 id="videosTitle"></h2>
         <div class="grid" id="videosGrid"></div>
     </div>
 </section>
 
 <section class="dark" id="gallery">
     <div class="container">
-        <div class="section-tag">Gallery</div>
-        <h2>Moments & Places</h2>
+        <div class="section-tag" id="galleryTag"></div>
+        <h2 id="galleryTitle"></h2>
         <div class="grid" id="galleryGrid"></div>
     </div>
 </section>
 
 <section class="booking" id="booking">
     <div class="container">
-        <div class="section-tag">Booking</div>
-        <h2 id="bookingHeadline">FPV for Events & Projects</h2>
+        <div class="section-tag" id="bookingTag"></div>
+        <h2 id="bookingHeadline"></h2>
 
         <div class="booking-box">
             <p id="bookingText"></p>
 
-            <a class="btn" id="bookingButton" href="#" target="_blank">
-                Send Booking Request
-            </a>
+            <a class="btn" id="bookingButton" href="#" target="_blank"></a>
 
             <form class="booking-form" id="bookingForm" style="display:none;">
                 <div class="form-row">
@@ -577,7 +571,6 @@ textarea{
 
                 <p class="legal-note">
                     By sending this request, you agree that your information will be used to process your booking request.
-                    Details will be available in the privacy policy.
                 </p>
 
                 <button class="btn" type="submit">
@@ -590,13 +583,9 @@ textarea{
 
 <section class="about dark" id="about">
     <div class="container">
-        <div class="section-tag">About</div>
-        <h2>Hi, I'm Tilly.</h2>
-        <p>
-            German FPV pilot focused on freestyle flying, abandoned places,
-            industrial locations and unique perspectives. Tilly FPV is about speed,
-            emotion and flying lines that put viewers right inside the action.
-        </p>
+        <div class="section-tag" id="aboutTag"></div>
+        <h2 id="aboutTitle"></h2>
+        <p id="aboutText"></p>
     </div>
 </section>
 
@@ -604,8 +593,8 @@ textarea{
     © Tilly FPV
 
     <div class="footer-links">
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html" id="footerImprint"></a>
+        <a href="datenschutz.html" id="footerPrivacy"></a>
         <a id="footerInstagram" href="#" target="_blank">Instagram</a>
         <a id="footerYoutube" href="#" target="_blank">YouTube</a>
     </div>
@@ -614,6 +603,17 @@ textarea{
 <script src="content.js"></script>
 
 <script>
+function getLanguage(){
+    const browserLanguage = navigator.language || navigator.userLanguage || "en";
+    const dachLanguages = ["de-DE", "de-AT", "de-CH", "de-LI", "de"];
+    return dachLanguages.some(lang => browserLanguage.toLowerCase().startsWith(lang.toLowerCase())) ? "de" : "en";
+}
+
+const currentLanguage = getLanguage();
+const content = siteContent[currentLanguage];
+
+document.documentElement.lang = currentLanguage;
+
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 
@@ -633,10 +633,30 @@ document.getElementById("tiktokLink").href = siteContent.social.tiktok;
 document.getElementById("footerInstagram").href = siteContent.social.instagram;
 document.getElementById("footerYoutube").href = siteContent.social.youtube;
 
+function translateNavigation(){
+    document.querySelectorAll("[data-i18n]").forEach(element => {
+        const path = element.getAttribute("data-i18n").split(".");
+        let value = content;
+
+        path.forEach(key => {
+            value = value[key];
+        });
+
+        element.textContent = value;
+    });
+}
+
+function renderHero(){
+    document.getElementById("heroTag").textContent = content.heroTag;
+    document.getElementById("heroTitle").textContent = content.heroTitle;
+    document.getElementById("heroSubtitle").innerHTML = content.heroSubtitle.join("<br>");
+}
+
 function renderEvents(){
     const container = document.getElementById("eventsGrid");
+    container.innerHTML = "";
 
-    siteContent.events.forEach(event => {
+    content.events.forEach(event => {
         container.innerHTML += `
             <div class="card event-card">
                 <div class="event-date">${event.date}</div>
@@ -650,8 +670,9 @@ function renderEvents(){
 
 function renderVideos(){
     const container = document.getElementById("videosGrid");
+    container.innerHTML = "";
 
-    siteContent.videos.forEach(video => {
+    content.videos.forEach(video => {
         container.innerHTML += `
             <div class="card">
                 <img src="${video.thumbnail}" alt="${video.title}">
@@ -667,8 +688,9 @@ function renderVideos(){
 
 function renderGallery(){
     const container = document.getElementById("galleryGrid");
+    container.innerHTML = "";
 
-    siteContent.gallery.forEach(item => {
+    content.gallery.forEach(item => {
         container.innerHTML += `
             <div class="card">
                 <img src="${item.image}" alt="${item.title}">
@@ -681,9 +703,10 @@ function renderGallery(){
 }
 
 function renderBooking(){
-    document.getElementById("bookingHeadline").textContent = siteContent.booking.headline;
-    document.getElementById("bookingText").textContent = siteContent.booking.text;
-    document.getElementById("bookingButton").textContent = siteContent.booking.buttonText;
+    document.getElementById("bookingTag").textContent = content.bookingTag;
+    document.getElementById("bookingHeadline").textContent = content.bookingHeadline;
+    document.getElementById("bookingText").textContent = content.bookingText;
+    document.getElementById("bookingButton").textContent = content.bookingButton;
     document.getElementById("bookingButton").href = siteContent.booking.buttonLink;
 
     if(siteContent.booking.enabled === true){
@@ -692,6 +715,23 @@ function renderBooking(){
     }
 }
 
+function renderStaticSections(){
+    document.getElementById("eventsTag").textContent = content.eventsTag;
+    document.getElementById("eventsTitle").textContent = content.eventsTitle;
+    document.getElementById("videosTag").textContent = content.videosTag;
+    document.getElementById("videosTitle").textContent = content.videosTitle;
+    document.getElementById("galleryTag").textContent = content.galleryTag;
+    document.getElementById("galleryTitle").textContent = content.galleryTitle;
+    document.getElementById("aboutTag").textContent = content.aboutTag;
+    document.getElementById("aboutTitle").textContent = content.aboutTitle;
+    document.getElementById("aboutText").textContent = content.aboutText;
+    document.getElementById("footerImprint").textContent = content.footerImprint;
+    document.getElementById("footerPrivacy").textContent = content.footerPrivacy;
+}
+
+translateNavigation();
+renderHero();
+renderStaticSections();
 renderEvents();
 renderVideos();
 renderGallery();
