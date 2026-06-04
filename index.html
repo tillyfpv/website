@@ -179,6 +179,16 @@ h1{
     text-shadow:0 3px 15px rgba(0,0,0,.9);
 }
 
+.follow{
+    color:#66aaff;
+    letter-spacing:4px;
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    text-align:center;
+    text-shadow:0 2px 14px rgba(0,0,0,.9);
+}
+
 .buttons{
     display:flex;
     gap:15px;
@@ -471,36 +481,53 @@ textarea{
 
     .content{
         position:absolute;
-        top:22svh;
+        top:110px;
         left:0;
         right:0;
-        padding:0 26px;
+        padding:0 28px;
         max-width:none;
-        text-align:center;
+        text-align:left;
     }
 
     .tag{
-        display:none;
+        display:block;
+        font-size:12px;
+        letter-spacing:4px;
+        margin-bottom:12px;
     }
 
     h1{
-        font-size:56px;
+        font-size:60px;
         line-height:.92;
-        margin-bottom:32px;
+        margin-bottom:30px;
         letter-spacing:1px;
     }
 
     .subtitle{
         font-size:18px;
         line-height:1.55;
-        margin-bottom:58px;
+        margin-bottom:0;
+    }
+
+    .follow{
+        position:fixed;
+        left:0;
+        right:0;
+        bottom:172px;
+        text-align:center;
+        z-index:5;
     }
 
     .buttons{
+        position:fixed;
+        left:0;
+        right:0;
+        bottom:86px;
         display:flex;
         justify-content:center;
         gap:14px;
         flex-wrap:nowrap;
+        z-index:5;
     }
 
     .social-icon{
@@ -559,17 +586,25 @@ textarea{
 @media(max-width:380px){
 
     .content{
-        top:100px;
+        top:104px;
         padding:0 24px;
     }
 
     h1{
-        font-size:56px;
+        font-size:54px;
     }
 
     .subtitle{
         font-size:17px;
-        margin-bottom:95px;
+        margin-bottom:0;
+    }
+
+    .follow{
+        bottom:166px;
+    }
+
+    .buttons{
+        bottom:82px;
     }
 
     .social-icon{
@@ -623,6 +658,8 @@ textarea{
         <h1 id="heroTitle"></h1>
 
         <div class="subtitle" id="heroSubtitle"></div>
+
+        <div class="follow">FOLLOW</div>
 
         <div class="buttons">
             <a class="btn social-icon" id="youtubeLink" href="#" target="_blank" aria-label="YouTube">
