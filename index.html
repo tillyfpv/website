@@ -553,7 +553,7 @@ textarea{
     <a class="logo" href="#top">TILLY FPV</a>
 
     <div class="nav-links">
-        <a href="#projects">Projects</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
         <a href="#booking" data-i18n="nav.booking">Booking</a>
         <a href="#events" data-i18n="nav.events">Events</a>
         <a href="#videos" data-i18n="nav.videos">Videos</a>
@@ -567,7 +567,7 @@ textarea{
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-    <a href="#projects">Projects</a>
+    <a href="#projects" data-i18n="nav.projects">Projects</a>
     <a href="#booking" data-i18n="nav.booking">Booking</a>
     <a href="#events" data-i18n="nav.events">Events</a>
     <a href="#videos" data-i18n="nav.videos">Videos</a>
@@ -595,8 +595,8 @@ textarea{
 
 <section class="dark" id="projects">
     <div class="container">
-        <div class="section-tag">Projects</div>
-        <h2>Selected FPV Work</h2>
+        <div class="section-tag" id="projectsTag"></div>
+        <h2 id="projectsTitle"></h2>
         <div class="grid" id="projectsGrid"></div>
     </div>
 </section>
@@ -634,6 +634,7 @@ textarea{
 
                 <p class="legal-note">
                     By sending this request, you agree that your information will be used to process your booking request.
+                    Details are available in the privacy policy.
                 </p>
 
                 <button class="btn" type="submit">
@@ -695,6 +696,7 @@ textarea{
     </div>
 </footer>
 
+<script src="settings.js"></script>
 <script src="content.js"></script>
 <script src="data/projects.js"></script>
 <script src="data/events.js"></script>
@@ -726,11 +728,11 @@ mobileMenu.querySelectorAll("a").forEach(link => {
     });
 });
 
-document.getElementById("youtubeLink").href = siteContent.social.youtube;
-document.getElementById("instagramLink").href = siteContent.social.instagram;
-document.getElementById("tiktokLink").href = siteContent.social.tiktok;
-document.getElementById("footerInstagram").href = siteContent.social.instagram;
-document.getElementById("footerYoutube").href = siteContent.social.youtube;
+document.getElementById("youtubeLink").href = settings.social.youtube;
+document.getElementById("instagramLink").href = settings.social.instagram;
+document.getElementById("tiktokLink").href = settings.social.tiktok;
+document.getElementById("footerInstagram").href = settings.social.instagram;
+document.getElementById("footerYoutube").href = settings.social.youtube;
 
 function translateNavigation(){
     document.querySelectorAll("[data-i18n]").forEach(element => {
@@ -763,7 +765,7 @@ function renderProjects(){
                     <small>${project.category}</small>
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
-                    <a href="${project.link}" target="_blank">Watch Project →</a>
+                    <a href="${project.link}" target="_blank">${content.projectButton}</a>
                 </div>
             </div>
         `;
@@ -799,7 +801,7 @@ function renderVideos(){
                 <div class="card-content">
                     <small>${video.category}</small>
                     <h3>${video.title}</h3>
-                    <a href="${video.link}" target="_blank">Watch →</a>
+                    <a href="${video.link}" target="_blank">${content.videoButton}</a>
                 </div>
             </div>
         `;
@@ -847,24 +849,31 @@ function renderBooking(){
     document.getElementById("bookingHeadline").textContent = content.bookingHeadline;
     document.getElementById("bookingText").textContent = content.bookingText;
     document.getElementById("bookingButton").textContent = content.bookingButton;
-    document.getElementById("bookingButton").href = siteContent.booking.buttonLink;
+    document.getElementById("bookingButton").href = settings.booking.buttonLink;
 
-    if(siteContent.booking.enabled === true){
+    if(settings.booking.enabled === true){
         document.getElementById("bookingButton").style.display = "none";
         document.getElementById("bookingForm").style.display = "grid";
     }
 }
 
 function renderStaticSections(){
+    document.getElementById("projectsTag").textContent = content.projectsTag;
+    document.getElementById("projectsTitle").textContent = content.projectsTitle;
+
     document.getElementById("eventsTag").textContent = content.eventsTag;
     document.getElementById("eventsTitle").textContent = content.eventsTitle;
+
     document.getElementById("videosTag").textContent = content.videosTag;
     document.getElementById("videosTitle").textContent = content.videosTitle;
+
     document.getElementById("galleryTag").textContent = content.galleryTag;
     document.getElementById("galleryTitle").textContent = content.galleryTitle;
+
     document.getElementById("aboutTag").textContent = content.aboutTag;
     document.getElementById("aboutTitle").textContent = content.aboutTitle;
     document.getElementById("aboutText").textContent = content.aboutText;
+
     document.getElementById("footerImprint").textContent = content.footerImprint;
     document.getElementById("footerPrivacy").textContent = content.footerPrivacy;
 }
