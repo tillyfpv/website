@@ -18,7 +18,7 @@ const projectsData = [
         category: "Freestyle FPV",
         image: "asset/hero1.jpg",
         description: "Freestyle Lines durch verlassene Industrieanlagen, Hallen, Silos und besondere Locations.",
-        link: "https://youtube.com/@tilly_fpv"
+        link: "https://www.youtube.com/shorts/wAcSgwG2hoY"
     },
     {
         title: "Real Estate & Locations",
