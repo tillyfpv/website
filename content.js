@@ -1,27 +1,26 @@
 const siteContent = {
-    social: {
-        youtube: "https://youtube.com/@tilly_fpv",
-        instagram: "https://www.instagram.com/tilly_fpv/",
-        tiktok: "https://www.tiktok.com/@tilly79_mw"
-    },
-
-    booking: {
-        enabled: false,
-        buttonLink: "https://www.instagram.com/tilly_fpv/"
-    },
-
     en: {
         heroTag: "FPV PILOT • CONTENT CREATOR",
         heroTitle: "TILLY FPV",
         heroSubtitle: ["Freestyle FPV Pilot", "FPV Filmmaker", "Content Creator"],
 
         nav: {
+            projects: "Projects",
+            booking: "Booking",
             events: "Events",
             videos: "Videos",
             gallery: "Gallery",
-            booking: "Booking",
             about: "About"
         },
+
+        projectsTag: "Projects",
+        projectsTitle: "Selected FPV Work",
+        projectButton: "Watch Project →",
+
+        bookingTag: "Booking",
+        bookingHeadline: "FPV for Events & Projects",
+        bookingText: "Looking for dynamic FPV footage for events, motorsport, locations or creative projects? Send a booking request and tell me what you have planned.",
+        bookingButton: "Send Booking Request",
 
         eventsTag: "Upcoming Events",
         eventsTitle: "Where I'm Flying Next",
@@ -29,18 +28,14 @@ const siteContent = {
 
         videosTag: "Featured Flights",
         videosTitle: "Latest Action",
+        videoButton: "Watch →",
 
         galleryTag: "Gallery",
         galleryTitle: "Moments & Places",
 
-        bookingTag: "Booking",
-        bookingHeadline: "FPV for Events & Projects",
-        bookingText: "Booking requests for FPV shoots, events, action footage or creative projects are coming soon. For now, reach out via Instagram DM.",
-        bookingButton: "Contact via Instagram",
-
         aboutTag: "About",
         aboutTitle: "Hi, I'm Tilly.",
-        aboutText: "German FPV pilot focused on freestyle flying, abandoned places, industrial locations and unique perspectives. Tilly FPV is about speed, emotion and flying lines that put viewers right inside the action.",
+        aboutText: "German FPV pilot focused on freestyle flying, abandoned places, industrial locations, motorsport and unique perspectives. Tilly FPV is about speed, emotion and flying lines that put viewers right inside the action.",
 
         footerImprint: "Imprint",
         footerPrivacy: "Privacy Policy"
@@ -52,12 +47,22 @@ const siteContent = {
         heroSubtitle: ["Freestyle FPV Pilot", "FPV Filmmaker", "Content Creator"],
 
         nav: {
+            projects: "Projekte",
+            booking: "Booking",
             events: "Events",
             videos: "Videos",
             gallery: "Galerie",
-            booking: "Booking",
             about: "Über mich"
         },
+
+        projectsTag: "Projekte",
+        projectsTitle: "Ausgewählte FPV-Projekte",
+        projectButton: "Projekt ansehen →",
+
+        bookingTag: "Booking",
+        bookingHeadline: "FPV für Events & Projekte",
+        bookingText: "Du suchst dynamische FPV-Aufnahmen für Events, Motorsport, Locations oder kreative Projekte? Schick mir einfach eine Booking-Anfrage und erzähl mir kurz, was geplant ist.",
+        bookingButton: "Booking-Anfrage senden",
 
         eventsTag: "Kommende Events",
         eventsTitle: "Wo ich als Nächstes fliege",
@@ -65,18 +70,14 @@ const siteContent = {
 
         videosTag: "Featured Flights",
         videosTitle: "Aktuelle Action",
+        videoButton: "Video ansehen →",
 
         galleryTag: "Galerie",
         galleryTitle: "Momente & Spots",
 
-        bookingTag: "Booking",
-        bookingHeadline: "FPV für Events & Projekte",
-        bookingText: "Booking-Anfragen für FPV-Aufnahmen, Events, Action-Footage oder kreative Projekte sind bald möglich. Bis dahin erreichst du mich am besten per Instagram DM.",
-        bookingButton: "Kontakt über Instagram",
-
         aboutTag: "Über mich",
         aboutTitle: "Hi, ich bin Tilly.",
-        aboutText: "FPV Pilot aus Deutschland mit Fokus auf Freestyle, Lost Places, industrielle Locations und besondere Perspektiven. Tilly FPV steht für Speed, Emotionen und Fluglinien, bei denen man sich mitten in der Action fühlt.",
+        aboutText: "FPV Pilot aus Deutschland mit Fokus auf Freestyle, Lost Places, industrielle Locations, Motorsport und besondere Perspektiven. Tilly FPV steht für Speed, Emotionen und Fluglinien, bei denen man sich mitten in der Action fühlt.",
 
         footerImprint: "Impressum",
         footerPrivacy: "Datenschutz"
