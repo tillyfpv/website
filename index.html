@@ -477,14 +477,13 @@ textarea{
         min-height:100svh;
         display:block;
         background-position:center center;
+        overflow:hidden;
     }
 
     .content{
         position:absolute;
-        top:96px;
-        left:0;
-        right:0;
-        padding:0 28px;
+        inset:0;
+        padding:96px 28px 0;
         max-width:none;
         text-align:left;
     }
@@ -493,13 +492,13 @@ textarea{
         display:block;
         font-size:12px;
         letter-spacing:4px;
-        margin-bottom:12px;
+        margin-bottom:8px;
     }
 
     h1{
         font-size:60px;
         line-height:.92;
-        margin-bottom:28px;
+        margin-bottom:24px;
         letter-spacing:1px;
     }
 
@@ -513,17 +512,16 @@ textarea{
         position:absolute;
         left:0;
         right:0;
-        bottom:140px;
+        bottom:168px;
         text-align:center;
         z-index:5;
-        pointer-events:none;
     }
 
     .buttons{
         position:absolute;
         left:0;
         right:0;
-        bottom:54px;
+        bottom:82px;
         display:flex;
         justify-content:center;
         gap:14px;
@@ -587,8 +585,7 @@ textarea{
 @media(max-width:380px){
 
     .content{
-        top:92px;
-        padding:0 24px;
+        padding:92px 24px 0;
     }
 
     h1{
@@ -601,11 +598,11 @@ textarea{
     }
 
     .follow{
-        bottom:132px;
+        bottom:160px;
     }
 
     .buttons{
-        bottom:48px;
+        bottom:76px;
     }
 
     .social-icon{
