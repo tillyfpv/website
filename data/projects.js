@@ -11,7 +11,7 @@ const projectsData = [
         category: "Motorsport",
         image: "asset/hero1.jpg",
         description: "High-speed FPV Tracking Shots, Follow-Cam und dynamische Perspektiven für Automotive-Events.",
-        link: "https://youtube.com/@tilly_fpv"
+        link: "https://www.instagram.com/reel/DQ2GwZVjdR-/?igsh=MXJlYzMyNDl4dW5wOQ=="
     },
     {
         title: "Industrial & Lost Places",
