@@ -7,7 +7,7 @@ const projectsData = [
         link: "https://youtube.com/@tilly_fpv"
     },
     {
-        title: "Drift Events",
+        title: "Drift Events_1",
         category: "Motorsport",
         image: "asset/hero1.jpg",
         description: "High-speed FPV Tracking Shots, Follow-Cam und dynamische Perspektiven für Automotive-Events.",
