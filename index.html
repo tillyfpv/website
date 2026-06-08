@@ -459,8 +459,19 @@ textarea{
 }
 
 
+.about{
+    padding:70px 30px 90px;
+}
+
+.about .container{
+    max-width:1050px;
+}
+
 .about-layout{
-    display:block;
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) 180px;
+    align-items:center;
+    gap:70px;
     max-width:980px;
     margin:0 auto;
 }
@@ -472,17 +483,28 @@ textarea{
 }
 
 .about-content{
-    max-width:none;
+    grid-column:1;
+    grid-row:1;
+    max-width:760px;
+}
+
+.about-content h2{
+    margin-bottom:34px;
+}
+
+.about-content p{
+    max-width:760px;
 }
 
 .about-image{
-    float:right;
-    width:160px;
-    height:160px;
-    min-width:160px;
+    grid-column:2;
+    grid-row:1;
+    width:180px;
+    height:180px;
+    min-width:180px;
     border-radius:50%;
     overflow:hidden;
-    margin:8px 0 20px 40px;
+    margin:8px 0 0 0;
     border:4px solid rgba(255,255,255,.12);
     box-shadow:0 15px 40px rgba(0,0,0,.45);
 }
