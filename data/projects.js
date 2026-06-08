@@ -25,6 +25,6 @@ const projectsData = [
         category: "Commercial",
         image: "asset/Locations.jpg",
         description: "FPV Fly-throughs für Immobilien, Gewerbeobjekte, Locations und kreative Präsentationen.",
-        link: "https://youtube.com/@tilly_fpv"
+        link: "https://youtube.com/shorts/b9yulA0HmeY?is=Wcs-7CUQPY6brQcZ"
     }
 ];
