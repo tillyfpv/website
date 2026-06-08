@@ -9,7 +9,7 @@ const projectsData = [
     {
         title: "Drift Events",
         category: "Motorsport",
-        image: "asset/hero1.jpg",
+        image: "asset/drift.jpg",
         description: "High-speed FPV Tracking Shots, Follow-Cam und dynamische Perspektiven für Automotive-Events.",
         link: "https://www.instagram.com/reel/DQ2GwZVjdR-/?igsh=MXJlYzMyNDl4dW5wOQ=="
     },
