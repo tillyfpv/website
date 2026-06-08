@@ -4,7 +4,7 @@ const projectsData = [
         category: "Motorsport",
         image: "asset/stockcar.jpg",
         description: "FPV mitten im Renngeschehen. Dreck, Speed, Action und direkte Nähe zu den Fahrzeugen.",
-        link: "https://youtube.com/@tilly_fpv"
+        link: "https://youtube.com/shorts/noBfo8ayUFI?is=ZkI_QvbrLBGbqQ3G"
     },
     {
         title: "Drift Events",
