@@ -458,6 +458,35 @@ textarea{
     color:white;
 }
 
+
+.about-layout{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:50px;
+}
+
+.about-content{
+    flex:1;
+}
+
+.about-image{
+    width:180px;
+    height:180px;
+    min-width:180px;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid rgba(255,255,255,.12);
+    box-shadow:0 15px 40px rgba(0,0,0,.45);
+}
+
+.about-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
 @media(min-width:851px){
 
     .follow{
@@ -780,9 +809,22 @@ textarea{
 
 <section class="about dark" id="about">
     <div class="container">
+
         <div class="section-tag" id="aboutTag"></div>
-        <h2 id="aboutTitle"></h2>
-        <p id="aboutText"></p>
+
+        <div class="about-layout">
+
+            <div class="about-content">
+                <h2 id="aboutTitle"></h2>
+                <p id="aboutText"></p>
+            </div>
+
+            <div class="about-image">
+                <img src="asset/about-me.jpg" alt="Tilly FPV">
+            </div>
+
+        </div>
+
     </div>
 </section>
 
