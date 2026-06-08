@@ -77,7 +77,7 @@ const siteContent = {
 
         aboutTag: "Über mich",
         aboutTitle: "Hi, ich bin Tilly.",
-        aboutText: "FPV Pilot aus Deutschland mit Fokus auf Freestyle, Lost Places, industrielle Locations, Motorsport und besondere Perspektiven. Tilly FPV steht für Speed, Emotionen und Fluglinien, bei denen man sich mitten in der Action fühlt.",
+        aboutText: "FPV Pilot aus Berlin mit Fokus auf Freestyle, Lost Places, industrielle Locations, Motorsport und besondere Perspektiven. Tilly FPV steht für Speed, Emotionen und Fluglinien, bei denen man sich mitten in der Action fühlt.",
 
         footerImprint: "Impressum",
         footerPrivacy: "Datenschutz"
