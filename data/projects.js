@@ -23,7 +23,7 @@ const projectsData = [
     {
         title: "Real Estate & Locations",
         category: "Commercial",
-        image: "asset/hero1.jpg",
+        image: "asset/Locations.jpg",
         description: "FPV Fly-throughs für Immobilien, Gewerbeobjekte, Locations und kreative Präsentationen.",
         link: "https://youtube.com/@tilly_fpv"
     }
