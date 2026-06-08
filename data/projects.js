@@ -2,7 +2,7 @@ const projectsData = [
     {
         title: "Stockcar Racing",
         category: "Motorsport",
-        image: "asset/hero1.jpg",
+        image: "asset/stockcar.jpg",
         description: "FPV mitten im Renngeschehen. Dreck, Speed, Action und direkte Nähe zu den Fahrzeugen.",
         link: "https://youtube.com/@tilly_fpv"
     },
