@@ -4,7 +4,7 @@ const videosData = {
             title: "Pure Emotion",
             category: "FPV Freestyle",
             link: "https://youtube.com/shorts/myYRoYWM76E",
-            thumbnail: "asset/hero1.jpg"
+            thumbnail: "asset/Pure Emotion.jpg"
         }
     ],
 
@@ -13,7 +13,7 @@ const videosData = {
             title: "Pure Emotion",
             category: "FPV Freestyle",
             link: "https://youtube.com/shorts/myYRoYWM76E",
-            thumbnail: "asset/hero1.jpg"
+            thumbnail: "asset/Pure Emotion.jpg"
         }
     ]
 };
