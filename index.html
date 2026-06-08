@@ -460,11 +460,9 @@ textarea{
 
 
 .about-layout{
-    display:grid;
-    grid-template-columns:minmax(0, 780px) 180px;
-    align-items:start;
-    justify-content:center;
-    gap:60px;
+    display:block;
+    max-width:980px;
+    margin:0 auto;
 }
 
 .about-layout::after{
@@ -474,20 +472,19 @@ textarea{
 }
 
 .about-content{
-    min-width:0;
-    order:1;
+    max-width:none;
 }
 
 .about-image{
-    width:180px;
-    height:180px;
-    min-width:180px;
+    float:right;
+    width:160px;
+    height:160px;
+    min-width:160px;
     border-radius:50%;
     overflow:hidden;
-    margin:14px 0 0 0;
+    margin:8px 0 20px 40px;
     border:4px solid rgba(255,255,255,.12);
     box-shadow:0 15px 40px rgba(0,0,0,.45);
-    order:2;
 }
 
 .about-image img{
