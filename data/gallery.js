@@ -1,7 +1,7 @@
 const galleryData = [
     {
         title: "Golden Hour Session",
-        image: "asset/hero1.jpg"
+        image: "asset/galerie1.jpg"
     },
     {
         title: "FPV Moment",
