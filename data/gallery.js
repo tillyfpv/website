@@ -5,7 +5,7 @@ const galleryData = [
     },
     {
         title: "FPV Moment",
-        image: "asset/hero1.jpg"
+        image: "asset/galerie2.jpg"
     },
     {
         title: "Sunset Flight",
