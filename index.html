@@ -297,24 +297,6 @@ h2{
     line-height:1.6;
 }
 
-.carousel-card .card-content{
-    padding:34px 24px 38px;
-}
-
-.carousel-card h3{
-    font-size:30px;
-    line-height:1.1;
-    margin:0 0 12px;
-    font-weight:900;
-}
-
-.carousel-card p{
-    font-size:16px;
-    line-height:1.45;
-    color:rgba(255,255,255,.82);
-    margin:0;
-}
-
 .card a{
     color:white;
     text-decoration:none;
@@ -381,6 +363,20 @@ h2{
 
 .carousel-card img{
     height:260px;
+}
+
+.carousel-card h3{
+    font-size:28px;
+    line-height:1.1;
+    margin:0 0 10px;
+    font-weight:900;
+}
+
+.carousel-card p{
+    font-size:16px;
+    line-height:1.45;
+    color:#cfd6e3;
+    opacity:.9;
 }
 
 .carousel-controls{
@@ -1034,33 +1030,13 @@ function renderGallery(){
     const container = document.getElementById("galleryTrack");
     container.innerHTML = "";
 
-    const galleryTexts = {
-        "Golden Hour Session": {
-            title: "Golden Hour",
-            description: "Die letzten Sonnenstrahlen und neue Lines."
-        },
-        "FPV Moment": {
-            title: "Neue Perspektiven",
-            description: "Wo andere Hindernisse sehen, sehe ich Möglichkeiten."
-        },
-        "Sunset Flight": {
-            title: "Im Flow",
-            description: "Alles ausgeblendet. Nur die Drohne und der Moment."
-        }
-    };
-
     galleryData.forEach(item => {
-        const text = galleryTexts[item.title] || {
-            title: item.title,
-            description: item.description || ""
-        };
-
         container.innerHTML += `
             <div class="card carousel-card">
-                <img src="${item.image}" alt="${text.title}">
+                <img src="${item.image}" alt="${item.title}">
                 <div class="card-content">
-                    <h3>${text.title}</h3>
-                    ${text.description ? `<p>${text.description}</p>` : ""}
+                    <h3>${item.title}</h3>
+                    ${item.description ? `<p>${item.description}</p>` : ""}
                 </div>
             </div>
         `;
