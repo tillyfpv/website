@@ -9,6 +9,6 @@ const galleryData = [
     },
     {
         title: "Sunset Flight",
-        image: "asset/hero1.jpg"
+        image: "asset/galerie3.jpg"
     }
 ];
