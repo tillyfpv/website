@@ -16,7 +16,7 @@ const projectsData = [
     {
         title: "Industrial & Lost Places",
         category: "Freestyle FPV",
-        image: "asset/hero1.jpg",
+        image: "asset/industrial.jpg",
         description: "Freestyle Lines durch verlassene Industrieanlagen, Hallen, Silos und besondere Locations.",
         link: "https://youtube.com/shorts/YM8yLvitP34?is=T7KkTxci4TMCxjOT"
     },
