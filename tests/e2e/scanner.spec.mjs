@@ -15,8 +15,8 @@ async function clearAppData(page) {
 
 test('start view has no visible camera image', async ({ page }) => {
   await clearAppData(page);
-  await expect(page.locator('.version')).toHaveText('v0.3.24');
-  await expect(page.locator('.signature')).toHaveText('by TilliFPV');
+  await expect(page.locator('.version')).toHaveText('v0.3.25');
+  await expect(page.locator('.signature')).toHaveText('by tillyfpv.de');
   await expect(page.locator('.site-link')).toHaveAttribute('href', 'https://tillyfpv.de/');
   await expect(page.locator('.bottom-version')).toHaveCount(0);
   await expect(page.locator('.bottom-nav button')).toHaveCount(3);
