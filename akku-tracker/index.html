@@ -12,13 +12,13 @@
 </head>
 <body>
 <main class="app-shell">
-  <header class="brand"><div class="eyebrow">OFFLINE · LOCAL FIRST <span class="version">v0.3.1</span></div><h1>Akku-Tracker</h1><div class="signature">by Tilly</div></header>
+  <header class="brand"><div class="eyebrow">OFFLINE · LOCAL FIRST <span class="version">v0.3.2</span></div><h1>Akku-Tracker</h1><div class="signature">by Tilly</div></header>
   <section id="view-scan" class="view">
+    <div id="scan-result" class="result-card" hidden><div class="success-check">✓</div><strong id="result-name">Akku erfasst</strong><p id="result-uses">Nutzung gespeichert</p><label class="scan-assignment">Copter-Zuordnung <span>optional</span><select id="scan-copter"><option value="">Kein Copter</option></select></label><button id="show-detail" class="text-button">Akku bearbeiten</button></div>
     <div class="quick-stats"><div><span id="today-count">0</span><small>Heute benutzt</small></div><div><span id="last-used">Noch kein Akku erfasst</span><small>Letzter Akku</small></div></div>
     <button class="scan-button" id="scan-button" type="button" onclick="window.startCameraScan()"><span class="scan-icon">⌗</span><span>AKKU SCANNEN</span><small>QR-Code vor die Kamera halten</small></button>
     <input id="scan-file" type="file" accept="image/*" capture="environment" hidden>
     <div id="qr-scanner" class="qr-scanner" hidden><video id="qr-video" playsinline muted></video><div class="scanner-frame"></div><p>QR-Code in den Rahmen halten …</p><button id="close-scanner" class="text-button" type="button">Abbrechen</button><button id="photo-fallback" class="secondary-small" type="button">Foto-Scan verwenden</button></div>
-    <div id="scan-result" class="result-card" hidden><div class="check">✓</div><div><strong id="result-name">Tattu 03</strong><p id="result-uses">Nutzung gespeichert</p></div><span id="result-status" class="status-ok">OK</span><label class="scan-assignment">Copter-Zuordnung <span>optional · nur passende Zellanzahl</span><select id="scan-copter"><option value="">Kein Copter</option></select></label><button id="continue-scan" class="primary">Weiter scannen</button><button id="show-detail" class="text-button">Akku bearbeiten</button></div>
     <form id="manual-scan" class="manual"><label for="manual-id">Testen ohne Kamera</label><div><input id="manual-id" placeholder="z. B. BAT-001" autocomplete="off"><button>Scannen</button></div></form>
   </section>
   <section id="view-batteries" class="view" hidden><div class="section-head"><div><div class="eyebrow">BESTAND</div><h2>Meine Akkus</h2></div><button id="new-battery" class="small-primary">+ Neu</button></div><div id="battery-list" class="battery-list"></div><button id="export-data" class="secondary">Daten exportieren</button></section>
