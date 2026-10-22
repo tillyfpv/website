@@ -15,8 +15,8 @@ async function clearAppData(page) {
 
 test('start view has no visible camera image', async ({ page }) => {
   await clearAppData(page);
-  await expect(page.locator('.version')).toHaveText('v0.3.19');
-  await expect(page.locator('.bottom-version')).toHaveText('Akku-Tracker · v0.3.19');
+  await expect(page.locator('.version')).toHaveText('v0.3.20');
+  await expect(page.locator('.bottom-version')).toHaveCount(0);
   await expect(page.locator('.bottom-nav button')).toHaveCount(3);
   await expect(page.locator('#copter-form')).toBeHidden();
   await expect(page.locator('#qr-scanner')).toBeHidden();
