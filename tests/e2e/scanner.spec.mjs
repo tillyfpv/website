@@ -15,8 +15,8 @@ async function clearAppData(page) {
 
 test('start view has no visible camera image', async ({ page }) => {
   await clearAppData(page);
-  await expect(page.locator('.version')).toHaveText('v0.3.15');
-  await expect(page.locator('.bottom-version')).toHaveText('Akku-Tracker · v0.3.15');
+  await expect(page.locator('.version')).toHaveText('v0.3.16');
+  await expect(page.locator('.bottom-version')).toHaveText('Akku-Tracker · v0.3.16');
   await expect(page.locator('.bottom-nav button')).toHaveCount(3);
   await expect(page.locator('#copter-form')).toBeHidden();
   await expect(page.locator('#qr-scanner')).toBeHidden();
@@ -74,6 +74,6 @@ test('successful scan shows full-screen result overlay with copter buttons and t
   await expect(page.locator('#scan-result')).toBeVisible();
   await expect(page.locator('#scan-result')).toHaveClass(/scan-overlay/);
   await expect(page.locator('#result-name')).toHaveText('Akku erkannt');
-  await expect(page.locator('#scan-copter-timer')).toContainText('Auswahl schließt in');
+  await expect(page.locator('#scan-copter-timer')).toContainText('00:00:');
   expect(await page.locator('#scan-result').evaluate(el => getComputedStyle(el).zIndex)).toBe('70');
 });
