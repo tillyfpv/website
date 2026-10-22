@@ -1,0 +1,23 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "content.js",
+  "scripts": {
+    "test": "LD_LIBRARY_PATH=/home/marcus/.hermes/cache/scratch/playwright-libs/usr/lib/x86_64-linux-gnu playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tillyfpv/website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tillyfpv/website/issues"
+  },
+  "homepage": "https://github.com/tillyfpv/website#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
+}
