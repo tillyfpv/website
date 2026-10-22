@@ -1,4 +1,4 @@
-const CACHE='akku-tracker-v20';
+const CACHE='akku-tracker-v21';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./logic.mjs','./manifest.webmanifest','./vendor/jsQR.js','./vendor/qrcode-generator.js'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(self.clients.claim()));
