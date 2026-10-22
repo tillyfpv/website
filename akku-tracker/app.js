@@ -84,7 +84,7 @@ function showView(view) { state.view = view; $('scan-result').hidden = true; ren
 $('scan-file').onchange = async (e) => { const file = e.target.files[0]; if (!file) return; try { await decodeFile(file); } catch (err) { showToast(err.message, 'warn'); } e.target.value = ''; };
 $('manual-scan').onsubmit = (e) => { e.preventDefault(); recordUse($('manual-id').value); $('manual-id').value = ''; };
 $('new-form').onsubmit = createBattery; $('detail-form').onsubmit = saveDetail;
-$('new-battery').onclick = () => openNew(); $('go-scan').onclick = () => showView('scan'); $('continue-scan').onclick = () => { $('scan-result').hidden = true; showView('scan'); };
+$('new-battery').onclick = () => openNew(); if ($('go-scan')) $('go-scan').onclick = () => showView('scan'); $('continue-scan').onclick = () => { $('scan-result').hidden = true; showView('scan'); };
 $('show-detail').onclick = () => { state.view = 'detail'; render(); }; $('export-data').onclick = () => { const blob = new Blob([JSON.stringify({ batteries: state.batteries, events: state.events }, null, 2)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `akku-tracker-${todayKey()}.json`; a.click(); URL.revokeObjectURL(a.href); };
 $('cancel-new').onclick = () => showView('scan');
 document.querySelectorAll('[data-view]').forEach((b) => b.onclick = () => showView(b.dataset.view));
