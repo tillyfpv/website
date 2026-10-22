@@ -15,7 +15,9 @@ async function clearAppData(page) {
 
 test('start view has no visible camera image', async ({ page }) => {
   await clearAppData(page);
-  await expect(page.locator('.version')).toHaveText('v0.3.23');
+  await expect(page.locator('.version')).toHaveText('v0.3.24');
+  await expect(page.locator('.signature')).toHaveText('by TilliFPV');
+  await expect(page.locator('.site-link')).toHaveAttribute('href', 'https://tillyfpv.de/');
   await expect(page.locator('.bottom-version')).toHaveCount(0);
   await expect(page.locator('.bottom-nav button')).toHaveCount(3);
   await expect(page.locator('#copter-form')).toBeHidden();
@@ -54,6 +56,9 @@ test('after a successful scan no camera image remains in the page', async ({ pag
   await expect(page.locator('#scan-result')).toBeVisible();
   await expect(page.locator('.bottom-nav')).toBeHidden();
   await expect(page.locator('.bottom-version')).toBeHidden();
+  await expect(page.locator('.brand')).toBeHidden();
+  await expect(page.locator('.quick-stats')).toBeHidden();
+  await expect(page.locator('.scan-button')).toBeHidden();
   await expect(page.locator('video')).toHaveCount(0);
   await expect(page.locator('#qr-scanner')).toBeHidden();
   await expect(page.locator('body video')).toHaveCount(0);
