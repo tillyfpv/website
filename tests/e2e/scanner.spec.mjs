@@ -15,7 +15,7 @@ async function clearAppData(page) {
 
 test('start view has no visible camera image', async ({ page }) => {
   await clearAppData(page);
-  await expect(page.locator('.version')).toHaveText('v0.3.33');
+  await expect(page.locator('.version')).toHaveText('v0.3.35');
   await expect(page.locator('.signature')).toHaveText('by tillyfpv.de');
   await expect(page.locator('.site-link')).toHaveAttribute('href', 'https://tillyfpv.de/');
   await expect(page.locator('.app-info summary')).toHaveText('ⓘ Hinweise & Datenschutz');
@@ -85,6 +85,12 @@ test('successful scan shows full-screen result overlay with copter buttons and t
   await expect(page.locator('#result-name')).toHaveText('Akku erkannt');
   await expect(page.locator('#scan-copter-timer')).toContainText('00:00:');
   expect(await page.locator('#scan-result').evaluate(el => getComputedStyle(el).zIndex)).toBe('70');
+});
+
+test('last usage shows battery, copter, date, time, and count', async ({ page }) => {
+  await clearAppData(page);
+  await page.evaluate(() => window.__akkuTrackerTest.recordUse('BAT-001'));
+  await expect(page.locator('#last-used')).toHaveText(/Tattu 01 · Copter nicht zugeordnet · \d{2}\.\d{2}\.\d{4}.*Nutzung 1/);
 });
 
 test('copter choice grid adapts to the number of copters', async ({ page }) => {
