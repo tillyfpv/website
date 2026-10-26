@@ -1,5 +1,5 @@
-const CACHE = 'skyrc-test-v7';
-const ASSETS = ['./', './index.html', './app.js?v=0.3.2', './styles.css', './manifest.webmanifest'];
+const CACHE = 'skyrc-test-v8';
+const ASSETS = ['./', './index.html', './app.js?v=0.4.0', './styles.css', './manifest.webmanifest'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));

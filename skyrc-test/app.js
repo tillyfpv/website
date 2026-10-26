@@ -40,45 +40,59 @@ function setValue(element, value, state = '') {
 let channelCharacteristic = null;
 let channelResponseHandler = null;
 let channelResponseReceived = false;
+let responseBuffer = [];
 
 function channelRequest(channel = 0) {
-  const packet = new Uint8Array(21);
-  packet[0] = 0x0f;
-  packet[1] = 0x55;
-  packet[2] = channel;
-  let checksum = 0;
-  for (let i = 0; i < 20; i += 1) checksum = (checksum + packet[i]) & 0xff;
-  packet[20] = checksum;
-  return packet;
+  // Q200neo/Q200 BLE status request: mask A=01, B=02, C=04, D=08.
+  const mask = 1 << channel;
+  return new Uint8Array([0x0f, 0x03, 0x55, mask, (0x55 + mask) & 0xff]);
 }
 
 function parseChannelResponse(data) {
   const bytes = new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
-  if (bytes.length < 21 || bytes[0] !== 0x0f || bytes[1] !== 0x55) {
+  if (bytes.length < 5 || bytes[0] !== 0x0f || bytes[2] !== 0x55) {
     return `Unbekannte Antwort (${bytes.length} Bytes): ${Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join(' ')}`;
   }
+  const payloadLength = bytes[1];
   const u16 = (index) => (bytes[index] << 8) | bytes[index + 1];
-  const status = {
-    0: 'Stand-by', 1: 'Laden', 2: 'Entladen', 3: 'Pause', 4: 'Fertig',
-    128: 'Eingangsspannung zu niedrig', 129: 'Eingangsspannung zu hoch',
-    132: 'Verbindung unterbrochen', 134: 'Kapazitätslimit', 135: 'Zeitlimit',
-    136: 'Ladegerät zu heiß', 137: 'Akku zu heiß', 138: 'Kurzschluss', 139: 'Verpolung'
-  }[bytes[6]] || `Unbekannt (${bytes[6]})`;
+  const mask = bytes[3];
+  const state = { 1: 'Aktiv', 2: 'Leerlauf', 3: 'Fertig', 4: 'Fehler', 5: 'Bereit', 6: 'Standby', 7: 'Netzteilmodus' }[bytes[4]] || `Unbekannt (${bytes[4]})`;
+  const voltage = u16(9);
+  const current = u16(11);
+  const cellValues = [];
+  for (let i = 17; i + 1 < bytes.length - 1; i += 2) {
+    const cell = u16(i);
+    if (cell) cellValues.push((cell / 1000).toFixed(3));
+  }
   return [
-    `Kanal ${String.fromCharCode(65 + bytes[2])}`,
-    `Status: ${status}`,
-    `Spannung: ${(u16(9) / 1000).toFixed(3)} V`,
-    `Strom: ${(u16(11) / 1000).toFixed(3)} A`,
-    `Kapazität: ${u16(13)} mAh`,
-    `Temperatur: ${bytes[15]} °C`,
-    `Laufzeit: ${Math.floor(u16(7) / 60)}:${String(u16(7) % 60).padStart(2, '0')}`,
-    `Rückmeldung: ${bytes.length} Bytes`
+    `Kanal: ${mask === 1 ? 'A' : `Maske 0x${mask.toString(16).padStart(2, '0')}`}`,
+    `Status: ${state}`,
+    `Spannung: ${voltage === 0xffff ? 'ungültig' : `${(voltage / 1000).toFixed(3)} V`}`,
+    `Strom: ${current === 0xffff ? 'ungültig' : `${(current / 1000).toFixed(3)} A`}`,
+    `Kapazität: ${u16(5)} mAh`,
+    `Akku-Temperatur: ${bytes[13]} °C`,
+    `Ladegerät-Temperatur: ${bytes[14]} °C`,
+    `Zellen: ${cellValues.length ? cellValues.join(' V, ') + ' V' : 'keine Zellspannungen'}`,
+    `Antwortlänge: ${payloadLength + 2} Bytes`
   ].join('\n');
 }
 
 function handleChannelValue(event, source = 'notification') {
-  if (source === 'notification') channelResponseReceived = true;
-  els.telemetry.textContent = `${source === 'notification' ? 'Benachrichtigung' : 'Lesen'}:\n${parseChannelResponse(event.target.value)}`;
+  const incoming = Array.from(new Uint8Array(event.target.value.buffer, event.target.value.byteOffset, event.target.value.byteLength));
+  if (source === 'notification') {
+    responseBuffer.push(...incoming);
+    while (responseBuffer.length && responseBuffer[0] !== 0x0f) responseBuffer.shift();
+  }
+  const bytes = source === 'notification' ? Uint8Array.from(responseBuffer) : new Uint8Array(event.target.value.buffer, event.target.value.byteOffset, event.target.value.byteLength);
+  const complete = bytes.length >= 5 && bytes[0] === 0x0f && bytes.length >= bytes[1] + 2;
+  if (complete) {
+    channelResponseReceived = true;
+    const frame = bytes.slice(0, bytes[1] + 2);
+    responseBuffer = Array.from(bytes.slice(bytes[1] + 2));
+    els.telemetry.textContent = `${source === 'notification' ? 'Benachrichtigung' : 'Lesen'}:\n${parseChannelResponse(frame)}`;
+  } else if (source !== 'notification' || bytes.length > 1) {
+    els.telemetry.textContent = `${source === 'notification' ? 'Benachrichtigung' : 'Lesen'}:\n${parseChannelResponse(bytes)}`;
+  }
 }
 
 function checkBrowser() {
