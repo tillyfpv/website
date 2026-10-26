@@ -15,16 +15,27 @@ async function clearAppData(page) {
 
 test('start view has no visible camera image', async ({ page }) => {
   await clearAppData(page);
-  await expect(page.locator('.version')).toHaveText('v0.3.36');
+  await expect(page.locator('.version')).toHaveText('v0.3.37');
   await expect(page.locator('.signature')).toHaveText('by tillyfpv.de');
   await expect(page.locator('.site-link')).toHaveAttribute('href', 'https://tillyfpv.de/');
-  await expect(page.locator('.app-info summary')).toHaveText('ⓘ Hinweise & Datenschutz');
+  await expect(page.locator('#help-button')).toHaveText('ⓘ Hilfe & Datenschutz');
   await expect(page.locator('.bottom-version')).toHaveCount(0);
   await expect(page.locator('.bottom-nav button')).toHaveCount(3);
   await expect(page.locator('#copter-form')).toBeHidden();
   await expect(page.locator('#qr-scanner')).toBeHidden();
   await expect(page.locator('video')).toHaveCount(1);
   await expect(page.locator('video')).toBeHidden();
+});
+
+test('help opens from the header and explains the core workflows', async ({ page }) => {
+  await clearAppData(page);
+  await page.getByRole('button', { name: /hilfe/i }).click();
+  await expect(page.locator('#view-help')).toBeVisible();
+  await expect(page.locator('#view-help')).toContainText('Was macht der Akku-Tracker?');
+  await expect(page.locator('#view-help')).toContainText('Copter anlegen');
+  await expect(page.locator('#view-help')).toContainText('QR-Code erzeugen');
+  await expect(page.locator('#view-help')).toContainText('60 Sekunden');
+  await expect(page.locator('#view-help')).toContainText('Android');
 });
 
 test('scanner opens only after scan button and closes without leaving video visible', async ({ page }) => {
