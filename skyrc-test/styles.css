@@ -1,0 +1,50 @@
+:root {
+  color-scheme: dark;
+  --bg: #101722;
+  --card: #182231;
+  --card-2: #202d3e;
+  --text: #f4f7fb;
+  --muted: #a9b5c4;
+  --line: #304054;
+  --accent: #65d6a3;
+  --warn: #ffca68;
+  --bad: #ff7b7b;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% -10%, #243d55 0, var(--bg) 52%);
+  color: var(--text);
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+}
+.shell { max-width: 560px; margin: 0 auto; padding: 28px 18px 36px; }
+.hero { padding: 12px 4px 20px; }
+.eyebrow { color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+h1 { margin: 7px 0 10px; font-size: clamp(2rem, 9vw, 3rem); line-height: 1.05; letter-spacing: -.04em; }
+h2 { margin: 0 0 8px; font-size: 1.12rem; }
+p { margin: 0; }
+.hero p, .muted, footer { color: var(--muted); }
+.card { margin-top: 14px; padding: 20px; background: rgba(24, 34, 49, .92); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 12px 30px rgba(0,0,0,.16); }
+.status-row { display: flex; align-items: center; gap: 10px; font-weight: 750; font-size: 1.1rem; }
+.status-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--warn); box-shadow: 0 0 0 5px rgba(255,202,104,.12); }
+.status-dot.good { background: var(--accent); box-shadow: 0 0 0 5px rgba(101,214,163,.12); }
+.status-dot.bad { background: var(--bad); box-shadow: 0 0 0 5px rgba(255,123,123,.12); }
+.result-card .muted { margin: 10px 0 18px; }
+.button { width: 100%; border: 0; border-radius: 14px; padding: 14px 16px; color: #07120e; font: inherit; font-weight: 750; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.button:disabled { opacity: .55; cursor: wait; }
+.primary { background: var(--accent); }
+.secondary { background: #d6e4f4; color: #102033; }
+.checks { padding: 7px 20px; }
+.check { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.check:last-child { border-bottom: 0; }
+.check strong { text-align: right; }
+.ok { color: var(--accent); }
+.bad { color: var(--bad); }
+.connect-card { border-color: #4f7c9c; }
+.feedback { margin-top: 12px; color: var(--warn); font-size: .92rem; }
+.note { background: rgba(32,45,62,.72); }
+.note p { color: var(--muted); font-size: .92rem; }
+.hidden { display: none; }
+footer { padding: 22px 4px 0; text-align: center; font-size: .78rem; }

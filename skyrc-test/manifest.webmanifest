@@ -1,0 +1,10 @@
+{
+  "name": "SkyRC Browser-Test",
+  "short_name": "SkyRC-Test",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#101722",
+  "theme_color": "#101722",
+  "lang": "de",
+  "icons": []
+}
