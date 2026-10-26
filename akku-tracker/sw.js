@@ -1,4 +1,4 @@
-const CACHE='akku-tracker-v44';
+const CACHE='akku-tracker-v45';
 const ASSETS=['./index.html','./styles.css','./app.js','./logic.mjs','./manifest.webmanifest','./vendor/jsQR.js','./vendor/qrcode-generator.js','./vendor/copter-icon.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('akku-tracker-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
