@@ -6,6 +6,8 @@ const els = {
   connectCard: $('connect-card'),
   connectResult: $('connect-result'),
   deviceInfo: $('device-info'),
+  readChannel: $('read-channel'),
+  telemetry: $('telemetry'),
   dot: $('status-dot'),
   overall: $('overall-status'),
   detail: $('status-detail'),
@@ -33,6 +35,48 @@ function browserName() {
 function setValue(element, value, state = '') {
   element.textContent = value;
   element.className = state;
+}
+
+let channelCharacteristic = null;
+let channelResponseHandler = null;
+
+function channelRequest(channel = 0) {
+  const packet = new Uint8Array(21);
+  packet[0] = 0x0f;
+  packet[1] = 0x55;
+  packet[2] = channel;
+  let checksum = 0;
+  for (let i = 0; i < 20; i += 1) checksum = (checksum + packet[i]) & 0xff;
+  packet[20] = checksum;
+  return packet;
+}
+
+function parseChannelResponse(data) {
+  const bytes = new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
+  if (bytes.length < 21 || bytes[0] !== 0x0f || bytes[1] !== 0x55) {
+    return `Unbekannte Antwort (${bytes.length} Bytes): ${Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join(' ')}`;
+  }
+  const u16 = (index) => (bytes[index] << 8) | bytes[index + 1];
+  const status = {
+    0: 'Stand-by', 1: 'Laden', 2: 'Entladen', 3: 'Pause', 4: 'Fertig',
+    128: 'Eingangsspannung zu niedrig', 129: 'Eingangsspannung zu hoch',
+    132: 'Verbindung unterbrochen', 134: 'Kapazitätslimit', 135: 'Zeitlimit',
+    136: 'Ladegerät zu heiß', 137: 'Akku zu heiß', 138: 'Kurzschluss', 139: 'Verpolung'
+  }[bytes[6]] || `Unbekannt (${bytes[6]})`;
+  return [
+    `Kanal ${String.fromCharCode(65 + bytes[2])}`,
+    `Status: ${status}`,
+    `Spannung: ${(u16(9) / 1000).toFixed(3)} V`,
+    `Strom: ${(u16(11) / 1000).toFixed(3)} A`,
+    `Kapazität: ${u16(13)} mAh`,
+    `Temperatur: ${bytes[15]} °C`,
+    `Laufzeit: ${Math.floor(u16(7) / 60)}:${String(u16(7) % 60).padStart(2, '0')}`,
+    `Rückmeldung: ${bytes.length} Bytes`
+  ].join('\n');
+}
+
+function handleChannelValue(event) {
+  els.telemetry.textContent = parseChannelResponse(event.target.value);
 }
 
 function checkBrowser() {
@@ -97,6 +141,9 @@ els.connect.addEventListener('click', async () => {
           const flags = ['read', 'write', 'writeWithoutResponse', 'notify', 'indicate']
             .filter(flag => p[flag]).join(', ');
           lines.push(`  Characteristic ${characteristic.uuid}${flags ? ` (${flags})` : ''}`);
+          if (characteristic.uuid.toLowerCase() === '0000ffe1-0000-1000-8000-00805f9b34fb') {
+            channelCharacteristic = characteristic;
+          }
         }
       } catch (error) {
         lines.push(`  Charakteristiken nicht lesbar: ${error?.message || error}`);
@@ -104,6 +151,15 @@ els.connect.addEventListener('click', async () => {
     }
     els.connectResult.textContent = 'GATT-Verbindung erfolgreich. Noch keine Ladeparameter gelesen.';
     els.deviceInfo.textContent = lines.join('\n');
+    if (channelCharacteristic) {
+      channelResponseHandler = handleChannelValue;
+      if (channelCharacteristic.properties.notify) {
+        await channelCharacteristic.startNotifications();
+        channelCharacteristic.addEventListener('characteristicvaluechanged', channelResponseHandler);
+      }
+      els.readChannel.classList.remove('hidden');
+      els.telemetry.textContent = 'Bereit für eine reine Statusabfrage von Kanal A.';
+    }
   } catch (error) {
     if (error?.name === 'NotFoundError') {
       els.connectResult.textContent = 'Kein Gerät ausgewählt oder Suche abgebrochen.';
@@ -115,6 +171,33 @@ els.connect.addEventListener('click', async () => {
   }
 });
 
+els.readChannel.addEventListener('click', async () => {
+  if (!channelCharacteristic) return;
+  els.readChannel.disabled = true;
+  els.telemetry.textContent = 'Kanal A wird abgefragt …';
+  try {
+    const packet = channelRequest(0);
+    if (channelCharacteristic.properties.writeWithoutResponse) {
+      await channelCharacteristic.writeValueWithoutResponse(packet);
+    } else if (channelCharacteristic.properties.write) {
+      await channelCharacteristic.writeValue(packet);
+    } else {
+      throw new Error('FFE1 unterstützt kein Schreiben.');
+    }
+    // Some SkyRC firmware sends a notification; older variants require a read.
+    await new Promise(resolve => setTimeout(resolve, 350));
+    if (channelCharacteristic.properties.read) {
+      const value = await channelCharacteristic.readValue();
+      handleChannelValue({ target: { value } });
+    }
+  } catch (error) {
+    els.telemetry.textContent = `Statusabfrage fehlgeschlagen: ${error?.message || error}`;
+  } finally {
+    els.readChannel.disabled = false;
+  }
+});
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }
+
