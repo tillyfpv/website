@@ -48,6 +48,10 @@ test('battery details offer QR image save and share actions', async ({ page }) =
   await expect(page.locator('#qr-card')).toBeVisible();
   await expect(page.getByRole('button', { name: /bild speichern/i })).toBeVisible();
   await expect(page.getByRole('button', { name: /teilen/i })).toBeVisible();
+  await expect(page.getByRole('button', { name: /qr-code ausblenden/i })).toBeVisible();
+  await page.getByRole('button', { name: /qr-code ausblenden/i }).click();
+  await expect(page.locator('#qr-card')).toBeHidden();
+  await expect(page.getByRole('button', { name: /qr-code anzeigen/i })).toBeVisible();
 });
 
 test('scanner opens only after scan button and closes without leaving video visible', async ({ page }) => {
