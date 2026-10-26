@@ -5,6 +5,7 @@ const els = {
   connect: $('connect'),
   connectCard: $('connect-card'),
   connectResult: $('connect-result'),
+  deviceInfo: $('device-info'),
   dot: $('status-dot'),
   overall: $('overall-status'),
   detail: $('status-detail'),
@@ -71,17 +72,43 @@ els.run.addEventListener('click', checkBrowser);
 els.connect.addEventListener('click', async () => {
   els.connect.disabled = true;
   els.connectResult.textContent = 'Bluetooth-Auswahldialog wird geöffnet …';
+  els.deviceInfo.textContent = '';
+  let server;
   try {
     const device = await navigator.bluetooth.requestDevice({
       acceptAllDevices: true,
-      optionalServices: []
+      // SkyRC/MC3000-style BLE service; no charge command is sent.
+      optionalServices: ['0000ffe0-0000-1000-8000-00805f9b34fb']
     });
-    els.connectResult.textContent = `Gerät ausgewählt: ${device.name || 'Name nicht übertragen'}. Noch keine SkyRC-Daten gelesen.`;
+    els.connectResult.textContent = `Gerät ausgewählt: ${device.name || 'Name nicht übertragen'}. GATT-Verbindung wird geprüft …`;
+    if (!device.gatt) throw new Error('Dieses Gerät stellt keine GATT-Verbindung bereit.');
+    device.addEventListener('gattserverdisconnected', () => {
+      els.connectResult.textContent = 'Bluetooth-Gerät wurde getrennt.';
+    });
+    server = await device.gatt.connect();
+    const services = await server.getPrimaryServices();
+    const lines = [`GATT verbunden: ${device.name || 'Name nicht übertragen'}`, `Dienste: ${services.length}`];
+    for (const service of services) {
+      lines.push(`\nService ${service.uuid}`);
+      try {
+        const characteristics = await service.getCharacteristics();
+        for (const characteristic of characteristics) {
+          const p = characteristic.properties;
+          const flags = ['read', 'write', 'writeWithoutResponse', 'notify', 'indicate']
+            .filter(flag => p[flag]).join(', ');
+          lines.push(`  Characteristic ${characteristic.uuid}${flags ? ` (${flags})` : ''}`);
+        }
+      } catch (error) {
+        lines.push(`  Charakteristiken nicht lesbar: ${error?.message || error}`);
+      }
+    }
+    els.connectResult.textContent = 'GATT-Verbindung erfolgreich. Noch keine Ladeparameter gelesen.';
+    els.deviceInfo.textContent = lines.join('\n');
   } catch (error) {
     if (error?.name === 'NotFoundError') {
       els.connectResult.textContent = 'Kein Gerät ausgewählt oder Suche abgebrochen.';
     } else {
-      els.connectResult.textContent = `Verbindungstest abgebrochen: ${error?.message || error}`;
+      els.connectResult.textContent = `Verbindungstest fehlgeschlagen: ${error?.message || error}`;
     }
   } finally {
     els.connect.disabled = false;

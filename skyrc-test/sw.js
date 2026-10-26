@@ -1,4 +1,4 @@
-const CACHE = 'skyrc-test-v1';
+const CACHE = 'skyrc-test-v2';
 const ASSETS = ['./', './index.html', './app.js', './styles.css', './manifest.webmanifest'];
 
 self.addEventListener('install', event => {

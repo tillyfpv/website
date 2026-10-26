@@ -44,6 +44,7 @@ p { margin: 0; }
 .bad { color: var(--bad); }
 .connect-card { border-color: #4f7c9c; }
 .feedback { margin-top: 12px; color: var(--warn); font-size: .92rem; }
+.device-info { margin: 14px 0 0; padding: 12px; overflow-x: auto; white-space: pre-wrap; color: #bcd8ed; background: #111a27; border: 1px solid var(--line); border-radius: 12px; font: .78rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; }
 .note { background: rgba(32,45,62,.72); }
 .note p { color: var(--muted); font-size: .92rem; }
 .hidden { display: none; }
