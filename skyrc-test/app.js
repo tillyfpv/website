@@ -39,6 +39,7 @@ function setValue(element, value, state = '') {
 
 let channelCharacteristic = null;
 let channelResponseHandler = null;
+let channelResponseReceived = false;
 
 function channelRequest(channel = 0) {
   const packet = new Uint8Array(21);
@@ -75,8 +76,9 @@ function parseChannelResponse(data) {
   ].join('\n');
 }
 
-function handleChannelValue(event) {
-  els.telemetry.textContent = parseChannelResponse(event.target.value);
+function handleChannelValue(event, source = 'notification') {
+  if (source === 'notification') channelResponseReceived = true;
+  els.telemetry.textContent = `${source === 'notification' ? 'Benachrichtigung' : 'Lesen'}:\n${parseChannelResponse(event.target.value)}`;
 }
 
 function checkBrowser() {
@@ -176,6 +178,7 @@ els.readChannel.addEventListener('click', async () => {
   els.readChannel.disabled = true;
   els.telemetry.textContent = 'Kanal A wird abgefragt …';
   try {
+    channelResponseReceived = false;
     const packet = channelRequest(0);
     if (channelCharacteristic.properties.writeWithoutResponse) {
       await channelCharacteristic.writeValueWithoutResponse(packet);
@@ -184,11 +187,14 @@ els.readChannel.addEventListener('click', async () => {
     } else {
       throw new Error('FFE1 unterstützt kein Schreiben.');
     }
-    // Some SkyRC firmware sends a notification; older variants require a read.
-    await new Promise(resolve => setTimeout(resolve, 350));
-    if (channelCharacteristic.properties.read) {
+    // Viele SkyRC-Geräte antworten per Notification. Nur wenn keine Notification kam, lesen wir ersatzweise zurück.
+    await new Promise(resolve => setTimeout(resolve, 600));
+    if (!channelResponseReceived && channelCharacteristic.properties.read) {
       const value = await channelCharacteristic.readValue();
-      handleChannelValue({ target: { value } });
+      handleChannelValue({ target: { value } }, 'read');
+    }
+    if (!channelResponseReceived && !channelCharacteristic.properties.read) {
+      els.telemetry.textContent = 'Keine Notification und keine lesbare Antwort erhalten.';
     }
   } catch (error) {
     els.telemetry.textContent = `Statusabfrage fehlgeschlagen: ${error?.message || error}`;
