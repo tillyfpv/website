@@ -15,7 +15,7 @@ async function clearAppData(page) {
 
 test('start view has no visible camera image', async ({ page }) => {
   await clearAppData(page);
-  await expect(page.locator('.version')).toHaveText('v0.3.37');
+  await expect(page.locator('.version')).toHaveText('v0.3.38');
   await expect(page.locator('.signature')).toHaveText('by tillyfpv.de');
   await expect(page.locator('.site-link')).toHaveAttribute('href', 'https://tillyfpv.de/');
   await expect(page.locator('#help-button')).toHaveText('ⓘ Hilfe & Datenschutz');
@@ -36,6 +36,18 @@ test('help opens from the header and explains the core workflows', async ({ page
   await expect(page.locator('#view-help')).toContainText('QR-Code erzeugen');
   await expect(page.locator('#view-help')).toContainText('60 Sekunden');
   await expect(page.locator('#view-help')).toContainText('Android');
+});
+
+test('battery details offer QR image save and share actions', async ({ page }) => {
+  await clearAppData(page);
+  await page.getByRole('button', { name: /akkus/i }).click();
+  await page.getByRole('button', { name: /tattu 01/i }).click();
+  await expect(page.locator('#view-detail')).toBeVisible();
+  await expect(page.getByRole('button', { name: /qr-code anzeigen/i })).toBeVisible();
+  await page.getByRole('button', { name: /qr-code anzeigen/i }).click();
+  await expect(page.locator('#qr-card')).toBeVisible();
+  await expect(page.getByRole('button', { name: /bild speichern/i })).toBeVisible();
+  await expect(page.getByRole('button', { name: /teilen/i })).toBeVisible();
 });
 
 test('scanner opens only after scan button and closes without leaving video visible', async ({ page }) => {
