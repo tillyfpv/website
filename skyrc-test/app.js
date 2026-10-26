@@ -141,7 +141,7 @@ els.connect.addEventListener('click', async () => {
           const flags = ['read', 'write', 'writeWithoutResponse', 'notify', 'indicate']
             .filter(flag => p[flag]).join(', ');
           lines.push(`  Characteristic ${characteristic.uuid}${flags ? ` (${flags})` : ''}`);
-          if (characteristic.uuid.toLowerCase() === '0000ffe1-0000-1000-8000-00805f9b34fb') {
+          if (characteristic.uuid.toLowerCase() === 'ffe1' || characteristic.uuid.toLowerCase().endsWith('ffe1')) {
             channelCharacteristic = characteristic;
           }
         }
