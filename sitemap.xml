@@ -5,4 +5,4 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-</urlset>
+  <url>\n    <loc>https://tillyfpv.de/fpv-config/</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n</urlset>

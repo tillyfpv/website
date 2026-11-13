@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Betaflight ERA 3 – Konfigurationsübersicht</title>
+  <style>
+    :root{--ink:#17202a;--muted:#66717d;--line:#d9e0e6;--accent:#f4b400;--soft:#fff8df;--warn:#fff0ea;--warnline:#ff6b35}
+    *{box-sizing:border-box} body{margin:0;background:#f5f7f9;color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+    main{max-width:1180px;margin:auto;padding:34px 22px 60px} h1{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 10px} h2{margin:34px 0 14px;font-size:24px} h3{font-size:18px;margin:0 0 8px} p{margin:8px 0}.sub{color:var(--muted);margin-bottom:24px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 8px 24px #17202a0b}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.badge{display:inline-block;background:var(--accent);color:#111;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:700;margin-bottom:10px}.warning{background:var(--warn);border:1px solid var(--warnline);border-radius:14px;padding:15px 18px;margin:18px 0}.warning strong{color:#c43b18}.checks{margin:8px 0 0;padding-left:22px}.checks li{margin:7px 0}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}.shot{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}.shot img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid #e7ebee;cursor:zoom-in}.caption{font-weight:700;margin:10px 2px 2px}.small{font-size:13px;color:var(--muted)} code{background:#f1f3f5;border-radius:5px;padding:2px 5px} footer{margin-top:35px;color:var(--muted);font-size:13px}.lightbox{display:none;position:fixed;z-index:20;inset:0;background:#07101eee;align-items:center;justify-content:center;padding:28px}.lightbox.open{display:flex}.lightbox img{max-width:96vw;max-height:92vh;width:auto;height:auto;object-fit:contain;box-shadow:0 12px 50px #000}.lightbox button{position:absolute;top:14px;right:20px;border:0;background:#fff;color:#17202a;border-radius:50%;width:42px;height:42px;font-size:28px;line-height:1;cursor:pointer}
+  </style>
+</head>
+<body>
+<main>
+  <span class="badge">Betaflight-Konfigurationsübersicht</span>
+  <h1>ERA 3 – T-Motor Velox F7 SE</h1>
+  <p class="sub">Zusammenstellung der Betaflight-Screenshots zum Weitergeben und Prüfen.</p>
+
+  <div class="card">
+    <h2 style="margin-top:0">Kurzfassung</h2>
+    <p>Betaflight 2026.6.1 auf einem TMOTORVELOXF7SE. Die Konfiguration nutzt CRSF/seriellen Empfänger, MSP-OSD, DShot und ein QUAD X-Mischschema. Vor einem Flug müssen vor allem FC-Ausrichtung, Motorzuordnung, VTX-Tabelle, Akku-Messung und Failsafe geprüft werden.</p>
+  </div>
+
+  <section class="card" style="margin-top:18px">
+    <h2 style="margin-top:0">CLI-Dump</h2>
+    <p>Der korrekte aktuelle Dump für ERA 3 kann hier heruntergeladen werden:</p>
+    <p><a href="BTFL_cli_ERA_3_20261113_212605_TMOTORVELOXF7SE.txt" download>CLI-Dump ERA 3 herunterladen</a></p>
+  </section>
+
+  <div class="warning"><strong>Sicherheits-Hinweis:</strong> Motor- und Failsafe-Tests immer ohne Propeller durchführen. Die Screenshots sind Daten zur Prüfung, keine Arbeitsanweisung zum blinden Übernehmen.</div>
+
+  <section class="grid">
+    <div class="card"><h3>Firmware</h3><p>Board: TMOTORVELOXF7SE<br>Firmware: <strong>BTFL 2026.6.1</strong><br>MSP API: 1.48</p></div>
+    <div class="card"><h3>Empfänger / OSD</h3><p>Serieller Empfänger aktiv, CRSF. UART2 ist für VTX (MSP + Anzeigeport) belegt.</p></div>
+    <div class="card"><h3>Motoren</h3><p><strong>DShot 300</strong> mit bidirektionalem DShot. Motorpole: 14. Dynamischer Leerlaufwert: 28.</p></div>
+    <div class="card"><h3>PID-Werte</h3><p>Roll: 58/52/47 · Pitch: 70/62/52 · Yaw: 58/52/0. PID-Tuning-Slider: AUS.</p></div>
+  </section>
+
+  <section class="card" style="margin-top:18px">
+    <h2 style="margin-top:0">Einbau- und Ausrichtungsreferenz</h2>
+    <p>Für die Prüfung gilt folgende Einbaulage:</p>
+    <ul class="checks">
+      <li><strong>FC:</strong> Stecker befinden sich auf der Oberseite; die USB-Buchse zeigt in Flugrichtung nach rechts.</li>
+      <li><strong>ESC:</strong> XT60 zeigt in Flugrichtung nach vorne.</li>
+    </ul>
+    <p>Diese Referenz muss mit der konfigurierten FC-Ausrichtung und der tatsächlichen Montage übereinstimmen.</p>
+  </section>
+
+  <section class="card" style="margin-top:18px">
+    <h2 style="margin-top:0">Vorbedingungen und Kontrollpunkte</h2>
+    <ol class="checks">
+      <li><strong>FC-Ausrichtung:</strong> Roll 180° und Yaw 90° müssen zum tatsächlichen Einbau passen.</li>
+      <li><strong>Motoren:</strong> Motorreihenfolge, Drehrichtung und „Motor direction is reversed“ ohne Propeller testen.</li>
+      <li><strong>VTX:</strong> Die Warnung zur nicht korrekt eingerichteten VTX-Tabelle beachten und Tabelle im Video-Sender-Reiter prüfen.</li>
+      <li><strong>Systemfrequenzen:</strong> Gyro 8 kHz und <strong>PID-Loop 4 kHz</strong> müssen zur FC-/Filter-Konfiguration passen.</li>
+      <li><strong>Akku:</strong> Spannungs- und Stromanzeige gegen ein Messgerät kalibrieren.</li>
+      <li><strong>Failsafe:</strong> Verhalten bei Funkverlust testen; keinen Test mit montierten Propellern durchführen.</li>
+      <li><strong>Blackbox:</strong> Nach einem kurzen Testflug Log auf Vibrationen, Filterung und PID-Verhalten prüfen.</li>
+    </ol>
+  </section>
+
+  <h2>Screenshot-Dokumentation</h2>
+  <section class="gallery">
+    <figure class="shot"><img src="codex-clipboard-3c6c72f8-7b4d-42c2-ac91-d58e5eae0434.png" alt="Firmware-Info"><figcaption class="caption">1. Firmware-Info</figcaption></figure>
+    <figure class="shot"><img src="codex-clipboard-ce1f5c01-0419-45a6-a740-e06218ecb7c9.png" alt="Anschlüsse und serielle Schnittstellen"><figcaption class="caption">2. Anschlüsse / serielle Schnittstellen</figcaption></figure>
+    <figure class="shot"><img src="codex-clipboard-e521b37f-ebcd-41a2-bc3e-008952e73b57.png" alt="Systemkonfiguration"><figcaption class="caption">3. Systemkonfiguration</figcaption></figure>
+    <figure class="shot"><img src="codex-clipboard-30645fdc-14de-445a-8c53-6599cff85d2b.png" alt="ESC und Motor Funktionen"><figcaption class="caption">4. ESC/Motor-Funktionen</figcaption></figure>
+    <figure class="shot"><img src="codex-clipboard-0c15314d-39f0-478a-a600-53170d8d3bcd.png" alt="Mischer und Motordrehrichtung"><figcaption class="caption">5. Mischer / Motordrehrichtung</figcaption></figure>
+    <figure class="shot"><img src="codex-clipboard-4eacb6a3-4b39-4ac4-a3ff-65c18c74caa2.png" alt="PID Tuning Slider"><figcaption class="caption">6. PID-Tuning-Slider</figcaption></figure>
+    <figure class="shot"><img src="codex-clipboard-792ede84-0df6-478d-ace0-44ce4d3d7d64.png" alt="PID-Werte"><figcaption class="caption">7. PID-Werte</figcaption></figure>
+    <figure class="shot"><img src="codex-clipboard-fc585a0f-59b8-4bc6-aad6-44995553e5b9.png" alt="PID-Werte zweite Ansicht"><figcaption class="caption">8. PID-Werte – zweite Ansicht</figcaption></figure>
+  </section>
+  <h2>AM32 ESC-Konfiguration <a href="https://am32.ca/configurator" target="_blank" rel="noopener noreferrer">(AM32-Konfigurator)</a></h2>
+  <section class="card">
+    <p>Zusätzliche Screenshots der ESC-Einstellungen. Auffällig und zu prüfen sind insbesondere „Complementary PWM“, die Motor-KV-Angabe, die Strom-/Spannungsgrenzen sowie die Einstellungen für Bremsen und Startverhalten.</p>
+  </section>
+  <section class="gallery">
+    <figure class="shot"><img src="codex-clipboard-6a9ff5ef-dc79-41fd-ba75-e72d3f667216.png" alt="ESC Bootloader und Motoren"><figcaption class="caption">9. ESC-Bootloader / Motoren</figcaption></figure>
+    <figure class="shot"><img src="codex-clipboard-fb1483f7-ad9d-4d09-8347-d55cbdf7da31.png" alt="ESC Motor Einstellungen"><figcaption class="caption">10. ESC-Motoreinstellungen</figcaption></figure>
+    <figure class="shot"><img src="codex-clipboard-720ec95c-7a34-43d5-9986-1193adcd4c71.png" alt="ESC erweiterte Einstellungen"><figcaption class="caption">11. ESC-Erweiterte Einstellungen</figcaption></figure>
+  </section>
+  <h2>Zusätzliche Firmware-Info</h2>
+  <section class="gallery">
+    <figure class="shot"><img src="codex-clipboard-6dafe246-60f2-45c0-ae60-641d8140506a.png" alt="Firmware Name und Version"><figcaption class="caption">12. ESC-Firmware: AT32DEV_F421, Version 2.20</figcaption></figure>
+  </section>
+  <footer>Erstellt aus den bereitgestellten Screenshots. Für eine belastbare Freigabe zusätzlich CLI-Dump, Hardware-Einbau und Blackbox-Log heranziehen.</footer>
+</main>
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Bild vergrößert">
+  <button type="button" id="lightboxClose" aria-label="Schließen">×</button>
+  <img id="lightboxImage" alt="Vergrößerte Ansicht">
+</div>
+<script>
+  const box=document.getElementById('lightbox'), big=document.getElementById('lightboxImage');
+  document.querySelectorAll('.shot img').forEach(img=>img.addEventListener('click',()=>{big.src=img.src;big.alt=img.alt;box.classList.add('open')}));
+  document.getElementById('lightboxClose').addEventListener('click',()=>box.classList.remove('open'));
+  box.addEventListener('click',e=>{if(e.target===box)box.classList.remove('open')});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')box.classList.remove('open')});
+</script>
+</body>
+</html>
+
